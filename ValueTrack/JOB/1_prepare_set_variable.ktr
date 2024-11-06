@@ -219,6 +219,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
 {
@@ -235,35 +236,46 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
   int outputListFilesInfex = getInputRowMeta().size();
 // start code
 	String date = get(Fields.Out, "date").getString(r);
-    String[] arrDate = date.split("-");
-	
-    String startDate = arrDate[0];
-    String endDate = arrDate[1];
-
-	Date start_date = new Date();
-	Date end_date = new Date();
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-    try {
-         start_date = formatter.parse(startDate);
-		 end_date = formatter.parse(endDate);
-    } catch (ParseException e) {
-        e.printStackTrace();
-    }    
-
-    StringBuilder dates = new StringBuilder();
-    String currentDate = startDate;
-
-    while (!currentDate.equals(endDate)) {
-        dates.append(currentDate).append(";");
-
-        int dateInt = Integer.parseInt(currentDate);
-        dateInt++;
-        currentDate = String.valueOf(dateInt);
+    String Dates;
+    Date start_date = new Date();
+    Date end_date = new Date();
+	if (date.equals("")) {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        start_date = cal.getTime();
+        end_date = start_date;
+        Dates = formatter.format(start_date);
     }
+    else {
+        String[] arrDate = date.split("-");
 
-    dates.append(endDate);
-	String Dates = dates.toString();
+        String startDate = arrDate[0];
+        String endDate = arrDate[1];
 
+        try {
+            start_date = formatter.parse(startDate);
+            end_date = formatter.parse(endDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        StringBuilder dates = new StringBuilder();
+        String currentDate = startDate;
+
+        while (!currentDate.equals(endDate)) {
+            dates.append(currentDate).append(";");
+
+            int dateInt = Integer.parseInt(currentDate);
+            dateInt++;
+            currentDate = String.valueOf(dateInt);
+        }
+
+        dates.append(endDate);
+        Dates = dates.toString();
+    }
+ 
+	
 	String PATTERN_FILE_NAME = getVariable("PATTERN_FILE_NAME", "r");
 	
 	StringBuilder file_name = new StringBuilder();
