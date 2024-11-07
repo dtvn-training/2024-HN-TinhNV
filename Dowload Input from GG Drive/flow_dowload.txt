@@ -1,0 +1,22 @@
+- lấy access token => dùng refresh token, client id, client secret
+chuẩn bị refresh token, client id, client secret
+tạo body tương tự trang google developer oauth background
+gửi request đến token_uri
+=> access token
+- lấy thông tin filename và fileId
+chuẩn bị access token, parent id
+tạo body : access token
+url: GET https://www.googleapis.com/drive/v3/files?q..
+=> json querry gì trả về neeesy 
+=> xử lý lấy file id tương ứng với filename cần tải
+
+- tải qua url 
+POST https://www.googleapis.com/drive/v3/files/{fileId}/download 
+GET https://www.googleapis.com/drive/v3/files/{fileId}?alt=media
+kèm access token
+
+
+
+
+
+
