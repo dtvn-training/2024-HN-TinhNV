@@ -179,7 +179,7 @@
            <schema_name/>
            </partitioning>
        <formula><field_name>CV_Sum</field_name>
-<formula_string>&#x5b;CV01&#x5d;&#x2b;&#x5b;CV02&#x5d;&#x2b;&#x5b;CV04&#x5d;</formula_string>
+<formula_string>&#x5b;Value_01&#x5d;&#x2b;&#x5b;Value_02&#x5d;&#x2b;&#x5b;Value_04&#x5d;</formula_string>
 <value_type>Number</value_type>
 <value_length>-1</value_length>
 <value_precision>-1</value_precision>
@@ -339,26 +339,26 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </group>
       <fields>
         <field>
-          <aggregate>CV01</aggregate>
-          <subject>CV01</subject>
+          <aggregate>Value_01</aggregate>
+          <subject>Value_01</subject>
           <type>SUM</type>
           <valuefield/>
         </field>
         <field>
-          <aggregate>CV02</aggregate>
-          <subject>CV02</subject>
+          <aggregate>Value_02</aggregate>
+          <subject>Value_02</subject>
           <type>SUM</type>
           <valuefield/>
         </field>
         <field>
-          <aggregate>CV03</aggregate>
-          <subject>CV03</subject>
-          <type>FIRST_INCL_NULL</type>
+          <aggregate>Value_03</aggregate>
+          <subject>Value_03</subject>
+          <type>SUM</type>
           <valuefield/>
         </field>
         <field>
-          <aggregate>CV04</aggregate>
-          <subject>CV04</subject>
+          <aggregate>Value_04</aggregate>
+          <subject>Value_04</subject>
           <type>SUM</type>
           <valuefield/>
         </field>
@@ -451,9 +451,9 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <precision>-1</precision>
       </field>
       <field>
-        <name>CV01</name>
+        <name>Value_01</name>
         <type>Number</type>
-        <format>&#x23;</format>
+        <format/>
         <currency/>
         <decimal/>
         <group/>
@@ -463,9 +463,9 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <precision>-1</precision>
       </field>
       <field>
-        <name>CV02</name>
+        <name>Value_02</name>
         <type>Number</type>
-        <format>&#x23;</format>
+        <format/>
         <currency/>
         <decimal/>
         <group/>
@@ -475,9 +475,9 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <precision>-1</precision>
       </field>
       <field>
-        <name>CV03</name>
+        <name>Value_03</name>
         <type>Number</type>
-        <format>&#x23;</format>
+        <format/>
         <currency/>
         <decimal/>
         <group/>
@@ -487,9 +487,9 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <precision>-1</precision>
       </field>
       <field>
-        <name>CV04</name>
+        <name>Value_04</name>
         <type>Number</type>
-        <format>&#x23;</format>
+        <format/>
         <currency/>
         <decimal/>
         <group/>
@@ -501,7 +501,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1472</xloc>
+      <xloc>1456</xloc>
       <yloc>240</yloc>
       <draw>Y</draw>
       </GUI>
@@ -530,19 +530,19 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>CV01</name>
+      </field>      <field>        <name>Value_01</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>CV02</name>
+      </field>      <field>        <name>Value_02</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>CV03</name>
+      </field>      <field>        <name>Value_03</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>CV04</name>
+      </field>      <field>        <name>Value_04</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -596,12 +596,12 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>CV01</name>
-        <rename>CV01</rename>
+      </meta>      <meta>        <name>Value_01</name>
+        <rename>Value_01</rename>
         <type>Number</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask>&#x23;</conversion_mask>
+        <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale/>
         <date_format_timezone/>
@@ -611,12 +611,12 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>CV02</name>
-        <rename>CV02</rename>
+      </meta>      <meta>        <name>Value_02</name>
+        <rename>Value_02</rename>
         <type>Number</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask>&#x23;</conversion_mask>
+        <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale/>
         <date_format_timezone/>
@@ -626,12 +626,12 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>CV03</name>
-        <rename>CV03</rename>
+      </meta>      <meta>        <name>Value_03</name>
+        <rename>Value_03</rename>
         <type>Number</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask>&#x23;</conversion_mask>
+        <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale/>
         <date_format_timezone/>
@@ -641,12 +641,12 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>CV04</name>
-        <rename>CV04</rename>
+      </meta>      <meta>        <name>Value_04</name>
+        <rename>Value_04</rename>
         <type>Number</type>
         <length>-2</length>
         <precision>-2</precision>
-        <conversion_mask>&#x23;</conversion_mask>
+        <conversion_mask/>
         <date_format_lenient>false</date_format_lenient>
         <date_format_locale/>
         <date_format_timezone/>
@@ -710,10 +710,16 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <case_sensitive>N</case_sensitive>
         <presorted>N</presorted>
       </field>
+      <field>
+        <name>Device</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1344</xloc>
+      <xloc>1328</xloc>
       <yloc>240</yloc>
       <draw>Y</draw>
       </GUI>
@@ -787,23 +793,23 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 	String Device = "Other";
 	String eventName = get(Fields.In, "eventName").getString(r);
 	Long counts = get(Fields.In, "counts").getInteger(r);
-	Double CV01 = 0.0;
-	Double CV02 = 0.0;
-	Double CV04 = 0.0;
+	Double Value_01 = 0.0;
+	Double Value_02 = 0.0;
+	Double Value_04 = 0.0;
 	if(!eventName.equals("event_1") && !eventName.equals("event_2") && !eventName.equals("event_3")){
-		CV04 = 1.0;
+		Value_04 = 1.0;
 	}
 	else if(eventName.equals("event_1")){
-		CV01 = counts.doubleValue();
+		Value_01 = counts.doubleValue();
 	}else if(eventName.equals("event_2")){
-		CV02 = counts.doubleValue();
+		Value_02 = counts.doubleValue();
 	}
 // end code
   outputRowData[outputListFilesInfex ] = formatted_date ;
   outputRowData[++outputListFilesInfex ] = Device ;
-  outputRowData[++outputListFilesInfex ] = CV01 ;
-  outputRowData[++outputListFilesInfex ] = CV02 ;
-  outputRowData[outputListFilesInfex + 2 ] = CV04 ;
+  outputRowData[++outputListFilesInfex ] = Value_01 ;
+  outputRowData[++outputListFilesInfex ] = Value_02 ;
+  outputRowData[outputListFilesInfex + 2 ] = Value_04 ;
   putRow(data.outputRowMeta, outputRowData);
   return true;
 }]]></class_source>
@@ -831,7 +837,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 
         </field>
         <field>
-        <field_name>CV01</field_name>
+        <field_name>Value_01</field_name>
 
         <field_type>Number</field_type>
 
@@ -841,7 +847,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 
         </field>
         <field>
-        <field_name>CV02</field_name>
+        <field_name>Value_02</field_name>
 
         <field_type>Number</field_type>
 
@@ -851,7 +857,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 
         </field>
         <field>
-        <field_name>CV03</field_name>
+        <field_name>Value_03</field_name>
 
         <field_type>Number</field_type>
 
@@ -861,7 +867,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 
         </field>
         <field>
-        <field_name>CV04</field_name>
+        <field_name>Value_04</field_name>
 
         <field_type>Number</field_type>
 
@@ -1042,7 +1048,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </valuetypes>
     <fields>
       <field>
-        <name>CV03</name>
+        <name>Value_03</name>
         <value>0</value>
         <mask/>
         <set_empty_string>N</set_empty_string>

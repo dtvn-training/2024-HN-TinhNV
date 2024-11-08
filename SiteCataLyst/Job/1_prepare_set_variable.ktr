@@ -10,8 +10,8 @@
     <directory>&#x2f;</directory>
     <parameters>
         <parameter>
-            <name>DATE</name>
-            <default_value>20240301-20240404</default_value>
+            <name>DATES</name>
+            <default_value/>
             <description/>
         </parameter>
     </parameters>

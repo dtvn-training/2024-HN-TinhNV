@@ -132,7 +132,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 			File file = new File(filePath);
               if (!file.exists()) {
                     FileWriter writer = new FileWriter(filePath);
-                    writer.write("CV_Date,Tracking_Code,Device,CV01,CV02,CV03,CV04");
+                    writer.write("CV_Date,Tracking_Code,Device,Value_01,Value_02,Value_03,Value_04");
                     writer.close();
              }
 			calendar.add(Calendar.DATE, 1);
