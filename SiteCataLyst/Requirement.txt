@@ -1,0 +1,38 @@
+GCSからCVファイルを取得する形式形式の新規作成となります。// Tạo ra một định dạng mới để lấy tệp CV từ GCS.
+
+■紐付け方法：URLパラメータ // Phương thức liên kết: URL parametter(Xuất output dạng SiteCataLyst)
+　※トラッカーIDはCVファイルの「pr_source_id」カラムから取得してください。 // Vui lòng lấy Tracker ID từ cột 「pr_source_id」 của tệp CV.
+
+　・URLパラメータ // URL parameters
+　　「PR_Source_ID」の値を利用して紐付けを行ってください。 // Vui lòng liên kết bằng giá trị 　「PR_Source_ID」
+　　
+　　例：// Ví dụ
+　　CVファイルトラッカーID：21218400 // CV file tracker ID: 21218400
+　　↓
+　　媒体URLパラメータ：PR_Source_ID=21218400 // Media URL parameter: PR_Source_ID=21218400
+
+■デバイス判別 // Nhận dạng thiết bị
+　判別は行いません。全て「Other」に振り分けてください。// Không xác định. Vui lòng sắp xếp mọi thứ thành 「Other」
+
+■入出力ファイル // Tệp I/O
+　Vui lòng lấy file được cho sẵn để tổng hợp
+
+■ファイル取得方法 // Phương pháp lấy file
+　こちらの処理ですが常にDATESで期間を指定して処理します。// Quá trình này luôn chỉ định khoảng thời gian bằng cách sử dụng DATES.
+　　
+　取得例：// Ví dụ:
+　DATES：20240301-20240404
+　取得ファイル：conversion_20240301-20240404.csv // File nhận được: conversion_20240301-20240404.csv
+　※DATESで指定した「FROM」-「TO」の日付を含むファイルを取得してください。// *Vui lòng lấy tệp bao gồm ngày「FROM」-「TO」 được chỉ định trong DATES
+
+■紐付け期間 // Thời gian liên kết
+　CVファイルに期間のデータが格納されています。 // Dữ liệu thời gian được lưu trữ trong tệp CV.
+　DATESで指定された期間のデータを取得した１つのファイルから取得してください。// Vui lòng lấy dữ liệu trong khoảng thời gian được chỉ định bởi DATES từ một tệp.
+
+■CV項目 // Các mục trong CV
+　以下のように紐づけるようにしてください。// Vui lòng liên kết như dưới đây.
+　
+　CV01：counts nếu eventName  = event_1
+　CV02：counts nếu eventName  = event_2
+　CV04：1 nếu eventName  khác event_1,event_2,event_3
+CV03 cố tình để rỗng nên không cần bận tâm
