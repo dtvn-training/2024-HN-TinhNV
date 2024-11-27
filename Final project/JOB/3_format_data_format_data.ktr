@@ -98,7 +98,7 @@
   <hop> <from>Classify media</from><to>YSS</to><enabled>Y</enabled> </hop>
   <hop> <from>Classify media</from><to>YDN</to><enabled>Y</enabled> </hop>
   <hop> <from>Classify media</from><to>MICROSOFT</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADWORDS</from><to>1.Get mappingLevel, matchType</to><enabled>N</enabled> </hop>
+  <hop> <from>ADWORDS</from><to>1.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
   <hop> <from>ADWORDS</from><to>2.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
   <hop> <from>ADWORDS</from><to>3.Get mappingLevel</to><enabled>Y</enabled> </hop>
   <hop> <from>ADWORDS</from><to>4.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
@@ -106,40 +106,38 @@
   <hop> <from>YSS</from><to>6.Get mappingLevel</to><enabled>Y</enabled> </hop>
   <hop> <from>YSS</from><to>7.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
   <hop> <from>YDN</from><to>8.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADS ad</from><to>2.Filter null rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADS keyword</from><to>3.Filter null rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADS webpage</from><to>4.Filter null rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>YSS ad</from><to>5.Filter null rows </to><enabled>Y</enabled> </hop>
-  <hop> <from>YSS keyword</from><to>6.Filter null rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>YSS webpage</from><to>7.Filter null rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>YDN ad</from><to>8.Filter null rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADS ad</from><to>2.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADS keyword</from><to>3.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADS webpage</from><to>4.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>YSS ad</from><to>5.Filter rows </to><enabled>Y</enabled> </hop>
+  <hop> <from>YSS keyword</from><to>6.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>YSS webpage</from><to>7.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>YDN ad</from><to>8.Filter rows</to><enabled>Y</enabled> </hop>
   <hop> <from>2.Get mappingLevel, matchType</from><to>2.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>2.Filter null rows</from><to>2.Sort media file</to><enabled>Y</enabled> </hop>
-  <hop> <from>2.Filter null rows</from><to>Dummy5</to><enabled>Y</enabled> </hop>
+  <hop> <from>2.Filter rows</from><to>2.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>2.Filter rows</from><to>Dummy5</to><enabled>Y</enabled> </hop>
   <hop> <from>3.Get mappingLevel</from><to>3.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>3.Filter null rows</from><to>3.Sort media file</to><enabled>Y</enabled> </hop>
-  <hop> <from>3.Filter null rows</from><to>Dummy6</to><enabled>Y</enabled> </hop>
+  <hop> <from>3.Filter rows</from><to>3.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>3.Filter rows</from><to>Dummy6</to><enabled>Y</enabled> </hop>
   <hop> <from>4.Get mappingLevel, matchType</from><to>4.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>4.Filter null rows</from><to>4.Sort media file</to><enabled>Y</enabled> </hop>
-  <hop> <from>4.Filter null rows</from><to>Dummy7</to><enabled>Y</enabled> </hop>
+  <hop> <from>4.Filter rows</from><to>4.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>4.Filter rows</from><to>Dummy7</to><enabled>Y</enabled> </hop>
   <hop> <from>5.Get mappingLevel, matchType</from><to>5.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>5.Filter null rows </from><to>5.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>5.Filter rows </from><to>5.Sort media file</to><enabled>Y</enabled> </hop>
   <hop> <from>6.Get mappingLevel</from><to>6.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>6.Filter null rows</from><to>6.Sort media file </to><enabled>Y</enabled> </hop>
-  <hop> <from>6.Filter null rows</from><to>Dummy9</to><enabled>Y</enabled> </hop>
-  <hop> <from>5.Filter null rows </from><to>Dummy8</to><enabled>Y</enabled> </hop>
-  <hop> <from>7.Filter null rows</from><to>Dummy10</to><enabled>Y</enabled> </hop>
+  <hop> <from>6.Filter rows</from><to>6.Sort media file </to><enabled>Y</enabled> </hop>
+  <hop> <from>6.Filter rows</from><to>Dummy9</to><enabled>Y</enabled> </hop>
+  <hop> <from>5.Filter rows </from><to>Dummy8</to><enabled>Y</enabled> </hop>
+  <hop> <from>7.Filter rows</from><to>Dummy10</to><enabled>Y</enabled> </hop>
   <hop> <from>7.Get mappingLevel, matchType</from><to>7.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>7.Filter null rows</from><to>7.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>7.Filter rows</from><to>7.Sort media file</to><enabled>Y</enabled> </hop>
   <hop> <from>8.Get mappingLevel, matchType</from><to>8.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>8.Filter null rows</from><to>8.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>8.Filter rows</from><to>8.Sort media file</to><enabled>Y</enabled> </hop>
   <hop> <from>MICROSOFT</from><to>9.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
-  <hop> <from>1.Filter null rows</from><to>2.Sort media file 2</to><enabled>N</enabled> </hop>
-  <hop> <from>1.Filter null rows</from><to>Dummy4</to><enabled>N</enabled> </hop>
-  <hop> <from>ADS campaign</from><to>1.Filter null rows</to><enabled>N</enabled> </hop>
-  <hop> <from>1.Get mappingLevel, matchType</from><to>1. Sort CV file 2</to><enabled>N</enabled> </hop>
-  <hop> <from>1. Sort CV file 2</from><to>1. Merge Join</to><enabled>N</enabled> </hop>
-  <hop> <from>2.Sort media file 2</from><to>1. Merge Join</to><enabled>N</enabled> </hop>
+  <hop> <from>1.Filter null rows</from><to>1.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Filter null rows</from><to>Dummy4</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADS campaign</from><to>1.Filter null rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Get mappingLevel, matchType</from><to>1. Sort CV file</to><enabled>Y</enabled> </hop>
   <hop> <from>2.Sort CV file</from><to>2.Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>2.Sort media file</from><to>2.Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>3.Sort CV file</from><to>3.Merge Join</to><enabled>Y</enabled> </hop>
@@ -154,7 +152,6 @@
   <hop> <from>7.Sort media file</from><to>7.Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>8.Sort CV file</from><to>8.Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>8.Sort media file</from><to>8.Merge Join</to><enabled>Y</enabled> </hop>
-  <hop> <from>1. Merge Join</from><to>1.Select values</to><enabled>N</enabled> </hop>
   <hop> <from>2.Merge Join</from><to>2.Select values</to><enabled>Y</enabled> </hop>
   <hop> <from>3.Merge Join</from><to>3.Select values</to><enabled>Y</enabled> </hop>
   <hop> <from>4.Merge Join</from><to>4.Select values</to><enabled>Y</enabled> </hop>
@@ -174,40 +171,18 @@
   <hop> <from>Mapping matchType</from><to>Mapping device</to><enabled>Y</enabled> </hop>
   <hop> <from>Mapping device</from><to>Group by</to><enabled>Y</enabled> </hop>
   <hop> <from>Group by</from><to>Sort output data</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get output filename</from><to>Export output</to><enabled>Y</enabled> </hop>
-  <hop> <from>Sort output data</from><to>Get output filename</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get output filename</from><to>Export output</to><enabled>N</enabled> </hop>
+  <hop> <from>Sort output data</from><to>Get output filename</to><enabled>N</enabled> </hop>
   <hop> <from>9.Get mappingLevel, matchType</from><to>Mapping account_id</to><enabled>Y</enabled> </hop>
   <hop> <from>Mapping account_id</from><to>9.Select values</to><enabled>Y</enabled> </hop>
-  <hop> <from>8.Filter null rows</from><to>Dummy11</to><enabled>Y</enabled> </hop>
+  <hop> <from>8.Filter rows</from><to>Dummy11</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Select values</from><to>Union2</to><enabled>Y</enabled> </hop>
+  <hop> <from>1. Sort CV file</from><to>1.Merge Join</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Merge Join</from><to>1.Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Sort media file</from><to>1.Merge Join</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>1. Merge Join</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<join_type>INNER</join_type>
-<step1/>
-<step2/>
-    <keys_1>
-    </keys_1>
-    <keys_2>
-    </keys_2>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2864</xloc>
-      <yloc>16</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>1. Sort CV file 2</name>
+    <name>1. Sort CV file</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -260,9 +235,9 @@
   <condition>
    <negated>N</negated>
    <leftvalue>Campaign_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
  </condition>
     </compare>
@@ -289,15 +264,9 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;campaign&#x22;&#x3b;&#xd;&#xa;var Keyword_MatchType &#x3d; null&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;campaign&#x22;&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>Keyword_MatchType</name>
-        <rename>Keyword_MatchType</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -410,8 +379,218 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>        <select_unspecified>N</select_unspecified>
-    </fields>     <cluster_schema/>
+    <fields>      <field>        <name>Date</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>media</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>account_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>mappingLevel</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>device</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Campaign_ID_1</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>adgroup_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ad_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>keyword_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Keyword_MatchType</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_01</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_02</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_03</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_04</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_05</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_06</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_07</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_08</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_09</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_10</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_11</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_12</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_13</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_14</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_15</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_16</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_17</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_18</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_19</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_20</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+      <meta>        <name>account_id</name>
+        <rename>accountId</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Campaign_ID_1</name>
+        <rename>searchEngineCampaignId</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>adgroup_id</name>
+        <rename>searchEngineAdGroupId</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>ad_id</name>
+        <rename>searchEngineAdId</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>keyword_id</name>
+        <rename>searchEngineKeywordId</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>      <meta>        <name>Keyword_MatchType</name>
+        <rename>matchType</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>3008</xloc>
       <yloc>16</yloc>
@@ -420,7 +599,7 @@
     </step>
 
   <step>
-    <name>2.Filter null rows</name>
+    <name>2.Filter rows</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -439,23 +618,23 @@
   <condition>
    <negated>N</negated>
    <leftvalue>Campaign_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Ad_group_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Ad_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
  </condition>
     </compare>
@@ -482,15 +661,9 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;campaign&#x22;&#x3b;&#xd;&#xa;var Keyword_MatchType &#x3d; null&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;ad&#x22;&#x3b;&#xd;&#xa;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>Keyword_MatchType</name>
-        <rename>Keyword_MatchType</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -947,7 +1120,7 @@
     </step>
 
   <step>
-    <name>2.Sort media file 2</name>
+    <name>1.Sort media file</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -981,7 +1154,7 @@
     </step>
 
   <step>
-    <name>3.Filter null rows</name>
+    <name>3.Filter rows</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -1000,23 +1173,23 @@
   <condition>
    <negated>N</negated>
    <leftvalue>Campaign_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Ad_group_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Keyword_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
  </condition>
     </compare>
@@ -1043,7 +1216,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;keyword&#x22;&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var mappingLevel &#x3d; keyword_mapping_level&#x3b;&#xd;&#xa;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
         <type>String</type>
@@ -1413,7 +1586,7 @@
     </step>
 
   <step>
-    <name>4.Filter null rows</name>
+    <name>4.Filter rows</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -1432,23 +1605,23 @@
   <condition>
    <negated>N</negated>
    <leftvalue>Campaign_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Ad_group_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Keyword_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
  </condition>
     </compare>
@@ -1475,15 +1648,9 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;keyword&#x22;&#x3b;&#xd;&#xa;var Keyword_MatchType &#x3d; null&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; keyword_mapping_level&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>Keyword_MatchType</name>
-        <rename>Keyword_MatchType</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -1851,7 +2018,7 @@
     </step>
 
   <step>
-    <name>5.Filter null rows </name>
+    <name>5.Filter rows </name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -1870,23 +2037,23 @@
   <condition>
    <negated>N</negated>
    <leftvalue>Campaign_tracking_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Ad_group_tracking_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Ad_tracking_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
  </condition>
     </compare>
@@ -1913,15 +2080,9 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;ad&#x22;&#x3b;&#xd;&#xa;var Keyword_MatchType &#x3d; null&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;ad&#x22;&#x3b;&#xd;&#xa;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>Keyword_MatchType</name>
-        <rename>Keyword_MatchType</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -2289,7 +2450,7 @@
     </step>
 
   <step>
-    <name>6.Filter null rows</name>
+    <name>6.Filter rows</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -2308,23 +2469,23 @@
   <condition>
    <negated>N</negated>
    <leftvalue>Campaign_tracking_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Ad_group_tracking_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Keyword_tracking_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
  </condition>
     </compare>
@@ -2351,7 +2512,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;keyword&#x22;&#x3b;&#xd;&#xa;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; keyword_mapping_level&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
         <type>String</type>
@@ -2721,7 +2882,7 @@
     </step>
 
   <step>
-    <name>7.Filter null rows</name>
+    <name>7.Filter rows</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -2740,23 +2901,23 @@
   <condition>
    <negated>N</negated>
    <leftvalue>Campaign_tracking_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Ad_group_tracking_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Keyword_tracking_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
  </condition>
     </compare>
@@ -2783,15 +2944,9 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;keyword&#x22;&#x3b;&#xd;&#xa;var Keyword_MatchType &#x3d; null&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var mappingLevel &#x3d; keyword_mapping_level&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>Keyword_MatchType</name>
-        <rename>Keyword_MatchType</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3141,7 +3296,7 @@
     </step>
 
   <step>
-    <name>8.Filter null rows</name>
+    <name>8.Filter rows</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -3160,23 +3315,23 @@
   <condition>
    <negated>N</negated>
    <leftvalue>Campaign_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Ad_group_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
    <leftvalue>Ad_ID</leftvalue>
-   <function>IS NOT NULL</function>
+   <function>REGEXP</function>
    <rightvalue/>
-   </condition>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   </conditions>
  </condition>
     </compare>
@@ -3203,15 +3358,9 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;ad&#x22;&#x3b;&#xd;&#xa;var Keyword_MatchType &#x3d; null&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;ad&#x22;&#x3b;&#xd;&#xa;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>Keyword_MatchType</name>
-        <rename>Keyword_MatchType</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -3593,15 +3742,9 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;keyword&#x22;&#x3b;&#xd;&#xa;var Keyword_MatchType &#x3d; null&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var mappingLevel &#x3d; keyword_mapping_level&#x3b;&#xd;&#xa;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>      <field>        <name>Keyword_MatchType</name>
-        <rename>Keyword_MatchType</rename>
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
@@ -5065,25 +5208,6 @@
    <function>&#x3e;</function>
    <rightvalue/>
    <value><name>constant</name><type>Number</type><text>0.0</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask>&#x23;.&#x23;&#x3b;-&#x23;.&#x23;</mask></value>   </condition>
-  <condition>
-   <negated>N</negated>
-   <operator>AND</operator>
-   <conditions>
-    <condition>
-     <negated>N</negated>
-     <leftvalue>Date</leftvalue>
-     <function>&#x3e;&#x3d;</function>
-     <rightvalue>start_date</rightvalue>
-     </condition>
-    <condition>
-     <negated>N</negated>
-     <operator>AND</operator>
-     <leftvalue>Date</leftvalue>
-     <function>&#x3c;&#x3d;</function>
-     <rightvalue>end_date</rightvalue>
-     </condition>
-    </conditions>
-   </condition>
   </conditions>
  </condition>
     </compare>
@@ -5185,6 +5309,10 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
   Object[] outputRowData = RowDataUtil.resizeArray(r, data.outputRowMeta.size());
   int outputListFilesInfex = getInputRowMeta().size();
 // start code
+	String ADS_ACCOUNT_ID = getVariable("PARAM_ADW_ACCOUNT_ID","r");
+	String YSS_ACCOUNT_ID = getVariable("PARAM_YSS_ACCOUNT_ID","r");
+	String YDN_ACCOUNT_ID = getVariable("PARAM_YDN_ACCOUNT_ID","r");
+	String MS_TEMPLATE_ID = getVariable("PARAM_MS_TEMPLATE_ID","r");
 	String trackingCode = get(Fields.In, "Fq_Banner_Id").getString(r);
 	String account_id = "";
     String campaign_id = "";
@@ -5192,10 +5320,43 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     String ad_id = "";
     String target_id = "";
     String keyword_id = "";
-
+	String keyword_mapping_level = "";
+	String Keyword_MatchType = "";
+	String media = null;
+	String[] arrADS = ADS_ACCOUNT_ID.split(";");
     String[] inputArrStr = trackingCode.split("_");
+	
+    if(inputArrStr.length > 0) {
+		account_id  = inputArrStr[0];
+		//get media
+		for(int i = 0; i < arrADS.length ; i++){
+        	if(account_id.equals(arrADS[i])){
+				media = "ADWORDS";
+			}
+    	}
 
-    if(inputArrStr.length > 0) account_id  = inputArrStr[0];
+		String[] arrYSS = YSS_ACCOUNT_ID.split(";");
+		for(int i = 0; i < arrYSS.length ; i++){
+        	if(account_id.equals(arrYSS[i])) {
+				media = "YSS";
+			}
+    	}
+		
+		String[] arrYDN = YDN_ACCOUNT_ID.split(";");
+		for(int i = 0; i < arrYDN.length ; i++){
+    	    if(account_id.equals(arrYDN[i])) {
+			media = "YDN";
+			}
+   		}
+
+		String[] arrMS = MS_TEMPLATE_ID.split(";");
+		for(int i = 0; i < arrMS.length ; i++){
+    	    if(account_id.equals(arrMS[i])) {
+				media = "MICROSOFT";
+			}
+    	}
+
+	}
     if(inputArrStr.length > 1) campaign_id  = inputArrStr[1];
     if(inputArrStr.length > 2) adgroup_id = inputArrStr[2];
     if(inputArrStr.length > 3) ad_id = inputArrStr[3];
@@ -5203,54 +5364,28 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         target_id = inputArrStr[4];
         String kwRegex = "kwd-(\\d+)";
         String dsaRegex = "dsa-(\\d+)";
+		String datRegex = "dat-(\\d+)";
         Pattern kwPattern = Pattern.compile(kwRegex);
         Matcher kwMatcher = kwPattern.matcher(target_id);
 
         Pattern dsaPattern = Pattern.compile(dsaRegex);
         Matcher dsaMatcher = dsaPattern.matcher(target_id);
 
+		Pattern datPattern = Pattern.compile(datRegex);
+        Matcher datMatcher = datPattern.matcher(target_id);
+
         if(kwMatcher.find()){
             keyword_id = kwMatcher.group(1);
-        } else if(dsaMatcher.find()){
+			keyword_mapping_level = "keyword";
+        } else if(dsaMatcher.find() && !media.equals("MICROSOFT")){
             keyword_id = dsaMatcher.group(1);
-        }
-    }
-
-// get Media
-	String media = null;
-	String ADS_ACCOUNT_ID = getVariable("PARAM_ADW_ACCOUNT_ID","r");
-	String YSS_ACCOUNT_ID = getVariable("PARAM_YSS_ACCOUNT_ID","r");
-	String YDN_ACCOUNT_ID = getVariable("PARAM_YDN_ACCOUNT_ID","r");
-	String MS_TEMPLATE_ID = getVariable("PARAM_MS_TEMPLATE_ID","r");
-	String[] arrADS = ADS_ACCOUNT_ID.split(";");
-	for(int i = 0; i < arrADS.length ; i++){
-        if(account_id.equals(arrADS[i])){
-			media = "ADWORDS";
+			keyword_mapping_level = "dsa";
+        } else if(datMatcher.find() && media.equals("MICROSOFT")){
+			keyword_id = datMatcher.group(1);
+			keyword_mapping_level = "dsa";
 		}
     }
 
-	String[] arrYSS = YSS_ACCOUNT_ID.split(";");
-	for(int i = 0; i < arrYSS.length ; i++){
-        if(account_id.equals(arrYSS[i])) {
-			media = "YSS";
-		}
-    }
-
-	String[] arrYDN = YDN_ACCOUNT_ID.split(";");
-	for(int i = 0; i < arrYDN.length ; i++){
-        if(account_id.equals(arrYDN[i])) {
-			media = "YDN";
-		}
-    }
-
-	String[] arrMS = MS_TEMPLATE_ID.split(";");
-	for(int i = 0; i < arrMS.length ; i++){
-        if(account_id.equals(arrMS[i])) {
-			media = "MICROSOFT";
-		}
-    }
-
-	
 // end code
   outputRowData[outputListFilesInfex ] = account_id;
   outputRowData[++outputListFilesInfex ] = campaign_id;
@@ -5258,6 +5393,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
   outputRowData[++outputListFilesInfex ] = ad_id;
   outputRowData[++outputListFilesInfex ] = keyword_id;
   outputRowData[++outputListFilesInfex ] = media;
+  outputRowData[++outputListFilesInfex ] = keyword_mapping_level;
+  outputRowData[++outputListFilesInfex ] = Keyword_MatchType;
   putRow(data.outputRowMeta, outputRowData);
   return true;
 }]]></class_source>
@@ -5316,6 +5453,26 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         </field>
         <field>
         <field_name>media</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>keyword_mapping_level</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+        <field>
+        <field_name>Keyword_MatchType</field_name>
 
         <field_type>String</field_type>
 
@@ -7556,6 +7713,34 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1168</xloc>
       <yloc>800</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>1.Merge Join</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<join_type>INNER</join_type>
+<step1>1. Sort CV file</step1>
+<step2>1.Sort media file</step2>
+    <keys_1>
+      <key>campaign_id</key>
+    </keys_1>
+    <keys_2>
+      <key>Campaign_ID</key>
+    </keys_2>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2864</xloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

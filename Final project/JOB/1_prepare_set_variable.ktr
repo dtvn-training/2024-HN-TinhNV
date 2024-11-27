@@ -350,7 +350,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <field>
         <field_name>start_date</field_name>
 
-        <field_type>String</field_type>
+        <field_type>Date</field_type>
 
         <field_length>-1</field_length>
 
@@ -360,7 +360,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <field>
         <field_name>end_date</field_name>
 
-        <field_type>String</field_type>
+        <field_type>Date</field_type>
 
         <field_length>-1</field_length>
 
