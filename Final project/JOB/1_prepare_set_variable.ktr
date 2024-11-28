@@ -160,7 +160,7 @@
     <name>Get variable</name>
     <type>UserDefinedJavaClass</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -206,36 +206,49 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     String NB_file_name = "";
     String Quote_file_name = "";
 	String is_default = "FALSE";
-    if (date.equals("")){
+    if (date.equals("")){ //daily
         cal.setTime(today);
+		cal.set(Calendar.HOUR_OF_DAY, 23);
+        cal.set(Calendar.MINUTE, 59);
+        cal.set(Calendar.SECOND, 59);
+        cal.set(Calendar.MILLISECOND, 999);
         cal.add(Calendar.DATE, -1);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
+		end_date = cal.getTime();
+		cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND,0);
         cal.set(Calendar.MILLISECOND,0);
-        end_date = cal.getTime();
-        cal.add(Calendar.DATE, -58);
+		cal.add(Calendar.DATE, -58);
         start_date = cal.getTime();
 
 		is_default="TRUE";
     }else{
-        cal.setTime(today);
+        cal.setTime(today); // lay khoang date ma daily file co the co data
         cal.add(Calendar.DATE, -1);
-        cal.set(Calendar.HOUR_OF_DAY, 0);
+		cal.set(Calendar.HOUR_OF_DAY, 23);
+        cal.set(Calendar.MINUTE, 59);
+        cal.set(Calendar.SECOND, 59);
+        cal.set(Calendar.MILLISECOND, 999);
+        Date to_date = cal.getTime();
+        cal.add(Calendar.DATE, -60);
+		cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND,0);
         cal.set(Calendar.MILLISECOND,0);
-        Date to_date = cal.getTime();
-        cal.add(Calendar.DATE, -60);
         Date from_date = cal.getTime();
-        String[] arrDate = date.split("-");
+        String[] arrDate = date.split("-"); // lay start, den tu param DATES
         String startDate = arrDate[0];
         String endDate = arrDate[1];
         try {
             start_date = formatter.parse(startDate);
-            end_date = formatter.parse(endDate);
-
-            if(end_date.compareTo(from_date) < 0 || start_date.compareTo(to_date) > 0){ // ngoai khoảng ngày
+            Date _end_date = formatter.parse(endDate);
+			cal.setTime(_end_date);
+			cal.set(Calendar.HOUR_OF_DAY, 23);
+        	cal.set(Calendar.MINUTE, 59);
+        	cal.set(Calendar.SECOND, 59);
+        	cal.set(Calendar.MILLISECOND, 999);
+			end_date = cal.getTime();
+            if(end_date.compareTo(from_date) < 0 || start_date.compareTo(to_date) > 0){ // ngoai khoang ngày
                 cal.setTime(start_date);
                 cal.add(Calendar.DATE, 61);
                 filename_start_date = cal.getTime();
@@ -256,17 +269,13 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
                 dates.append(formatter.format(currentDate));
                 filename_date_string = dates.toString();
             }
-            else if (start_date.compareTo(from_date) < 0){ 
+            else if (start_date.compareTo(from_date) < 0){ // nua trong nua ngoai
                 cal.setTime(start_date);
                 cal.add(Calendar.DATE, 61);
                 filename_start_date = cal.getTime();
 
                 cal.setTime(today);
                 cal.add(Calendar.DATE, -1);
-                cal.set(Calendar.HOUR_OF_DAY, 0);
-                cal.set(Calendar.MINUTE, 0);
-                cal.set(Calendar.SECOND,0);
-                cal.set(Calendar.MILLISECOND,0);
                 filename_end_date = cal.getTime();
 
                 StringBuilder dates = new StringBuilder();
@@ -432,7 +441,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <use_formatting>Y</use_formatting>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>848</xloc>
+      <xloc>960</xloc>
       <yloc>240</yloc>
       <draw>Y</draw>
       </GUI>

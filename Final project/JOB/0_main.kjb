@@ -118,7 +118,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>576</xloc>
+      <xloc>560</xloc>
       <yloc>176</yloc>
       </entry>
     <entry>
@@ -191,7 +191,7 @@
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>944</xloc>
-      <yloc>176</yloc>
+      <yloc>256</yloc>
       </entry>
   </entries>
   <hops>
@@ -227,12 +227,21 @@
       <to>Upload</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>
     <hop>
       <from>Upload</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>N</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Format data</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>

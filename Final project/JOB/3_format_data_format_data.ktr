@@ -78,11 +78,11 @@
   <order>
   <hop> <from>Set Value_01</from><to>1.Select date, device, tracking code</to><enabled>Y</enabled> </hop>
   <hop> <from>Set Value_02</from><to>2.Select date, device, tracking code</to><enabled>Y</enabled> </hop>
-  <hop> <from>1.Select date, device, tracking code</from><to>Union</to><enabled>Y</enabled> </hop>
-  <hop> <from>2.Select date, device, tracking code</from><to>Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Select date, device, tracking code</from><to>1.Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>2.Select date, device, tracking code</from><to>1.Union</to><enabled>Y</enabled> </hop>
   <hop> <from>Read NB files</from><to>Set Value_01</to><enabled>Y</enabled> </hop>
   <hop> <from>Read Quote file</from><to>Set Value_02</to><enabled>Y</enabled> </hop>
-  <hop> <from>Union</from><to>Get target_filename</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Union</from><to>Get target_filename</to><enabled>Y</enabled> </hop>
   <hop> <from>Get target_filename</from><to>Get newest data</to><enabled>Y</enabled> </hop>
   <hop> <from>Get newest data</from><to>Dummy1</to><enabled>Y</enabled> </hop>
   <hop> <from>Get newest data</from><to>Filter null tracking code</to><enabled>Y</enabled> </hop>
@@ -91,21 +91,20 @@
   <hop> <from>Get componentId</from><to>null to 0</to><enabled>Y</enabled> </hop>
   <hop> <from>null to 0</from><to>Get CV_sum</to><enabled>Y</enabled> </hop>
   <hop> <from>Get CV_sum</from><to>Get start_date, end_date</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get start_date, end_date</from><to>Filter media, sumCV, Date</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter media, sumCV, Date</from><to>Dummy3</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter media, sumCV, Date</from><to>Classify media</to><enabled>Y</enabled> </hop>
   <hop> <from>Classify media</from><to>ADWORDS</to><enabled>Y</enabled> </hop>
   <hop> <from>Classify media</from><to>YSS</to><enabled>Y</enabled> </hop>
   <hop> <from>Classify media</from><to>YDN</to><enabled>Y</enabled> </hop>
   <hop> <from>Classify media</from><to>MICROSOFT</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADWORDS</from><to>1.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADWORDS</from><to>2.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADWORDS</from><to>1.Get mappingLevel</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADWORDS</from><to>2.Get mappingLevel</to><enabled>Y</enabled> </hop>
   <hop> <from>ADWORDS</from><to>3.Get mappingLevel</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADWORDS</from><to>4.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
-  <hop> <from>YSS</from><to>5.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADWORDS</from><to>4.Get mappingLevel</to><enabled>Y</enabled> </hop>
+  <hop> <from>YSS</from><to>5.Get mappingLevel</to><enabled>Y</enabled> </hop>
   <hop> <from>YSS</from><to>6.Get mappingLevel</to><enabled>Y</enabled> </hop>
-  <hop> <from>YSS</from><to>7.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
-  <hop> <from>YDN</from><to>8.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
+  <hop> <from>YSS</from><to>7.Get mappingLevel</to><enabled>Y</enabled> </hop>
+  <hop> <from>YDN</from><to>8.Get mappingLevel</to><enabled>Y</enabled> </hop>
   <hop> <from>ADS ad</from><to>2.Filter rows</to><enabled>Y</enabled> </hop>
   <hop> <from>ADS keyword</from><to>3.Filter rows</to><enabled>Y</enabled> </hop>
   <hop> <from>ADS webpage</from><to>4.Filter rows</to><enabled>Y</enabled> </hop>
@@ -113,31 +112,31 @@
   <hop> <from>YSS keyword</from><to>6.Filter rows</to><enabled>Y</enabled> </hop>
   <hop> <from>YSS webpage</from><to>7.Filter rows</to><enabled>Y</enabled> </hop>
   <hop> <from>YDN ad</from><to>8.Filter rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>2.Get mappingLevel, matchType</from><to>2.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>2.Get mappingLevel</from><to>2.Sort CV file</to><enabled>Y</enabled> </hop>
   <hop> <from>2.Filter rows</from><to>2.Sort media file</to><enabled>Y</enabled> </hop>
   <hop> <from>2.Filter rows</from><to>Dummy5</to><enabled>Y</enabled> </hop>
   <hop> <from>3.Get mappingLevel</from><to>3.Sort CV file</to><enabled>Y</enabled> </hop>
   <hop> <from>3.Filter rows</from><to>3.Sort media file</to><enabled>Y</enabled> </hop>
   <hop> <from>3.Filter rows</from><to>Dummy6</to><enabled>Y</enabled> </hop>
-  <hop> <from>4.Get mappingLevel, matchType</from><to>4.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>4.Get mappingLevel</from><to>4.Sort CV file</to><enabled>Y</enabled> </hop>
   <hop> <from>4.Filter rows</from><to>4.Sort media file</to><enabled>Y</enabled> </hop>
   <hop> <from>4.Filter rows</from><to>Dummy7</to><enabled>Y</enabled> </hop>
-  <hop> <from>5.Get mappingLevel, matchType</from><to>5.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>5.Get mappingLevel</from><to>5.Sort CV file</to><enabled>Y</enabled> </hop>
   <hop> <from>5.Filter rows </from><to>5.Sort media file</to><enabled>Y</enabled> </hop>
   <hop> <from>6.Get mappingLevel</from><to>6.Sort CV file</to><enabled>Y</enabled> </hop>
   <hop> <from>6.Filter rows</from><to>6.Sort media file </to><enabled>Y</enabled> </hop>
   <hop> <from>6.Filter rows</from><to>Dummy9</to><enabled>Y</enabled> </hop>
   <hop> <from>5.Filter rows </from><to>Dummy8</to><enabled>Y</enabled> </hop>
   <hop> <from>7.Filter rows</from><to>Dummy10</to><enabled>Y</enabled> </hop>
-  <hop> <from>7.Get mappingLevel, matchType</from><to>7.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>7.Get mappingLevel</from><to>7.Sort CV file</to><enabled>Y</enabled> </hop>
   <hop> <from>7.Filter rows</from><to>7.Sort media file</to><enabled>Y</enabled> </hop>
-  <hop> <from>8.Get mappingLevel, matchType</from><to>8.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>8.Get mappingLevel</from><to>8.Sort CV file</to><enabled>Y</enabled> </hop>
   <hop> <from>8.Filter rows</from><to>8.Sort media file</to><enabled>Y</enabled> </hop>
-  <hop> <from>MICROSOFT</from><to>9.Get mappingLevel, matchType</to><enabled>Y</enabled> </hop>
-  <hop> <from>1.Filter null rows</from><to>1.Sort media file</to><enabled>Y</enabled> </hop>
-  <hop> <from>1.Filter null rows</from><to>Dummy4</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADS campaign</from><to>1.Filter null rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>1.Get mappingLevel, matchType</from><to>1. Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>MICROSOFT</from><to>9.Get mappingLevel</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Filter rows</from><to>1.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Filter rows</from><to>Dummy4</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADS campaign</from><to>1.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Get mappingLevel</from><to>1. Sort CV file</to><enabled>Y</enabled> </hop>
   <hop> <from>2.Sort CV file</from><to>2.Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>2.Sort media file</from><to>2.Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>3.Sort CV file</from><to>3.Merge Join</to><enabled>Y</enabled> </hop>
@@ -159,27 +158,28 @@
   <hop> <from>6.Merge Join</from><to>6.Select values</to><enabled>Y</enabled> </hop>
   <hop> <from>7.Merge Join</from><to>7.Select values</to><enabled>Y</enabled> </hop>
   <hop> <from>8.Merge Join</from><to>8.Select values</to><enabled>Y</enabled> </hop>
-  <hop> <from>5.Select values</from><to>Union2</to><enabled>Y</enabled> </hop>
-  <hop> <from>4.Select values</from><to>Union2</to><enabled>Y</enabled> </hop>
-  <hop> <from>3.Select values</from><to>Union2</to><enabled>Y</enabled> </hop>
-  <hop> <from>2.Select values</from><to>Union2</to><enabled>Y</enabled> </hop>
-  <hop> <from>6.Select values</from><to>Union2</to><enabled>Y</enabled> </hop>
-  <hop> <from>7.Select values</from><to>Union2</to><enabled>Y</enabled> </hop>
-  <hop> <from>8.Select values</from><to>Union2</to><enabled>Y</enabled> </hop>
-  <hop> <from>9.Select values</from><to>Union2</to><enabled>Y</enabled> </hop>
-  <hop> <from>Union2</from><to>Mapping matchType</to><enabled>Y</enabled> </hop>
+  <hop> <from>5.Select values</from><to>2.Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>4.Select values</from><to>2.Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>3.Select values</from><to>2.Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>2.Select values</from><to>2.Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>6.Select values</from><to>2.Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>7.Select values</from><to>2.Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>8.Select values</from><to>2.Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>9.Select values</from><to>2.Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>2.Union</from><to>Mapping matchType</to><enabled>Y</enabled> </hop>
   <hop> <from>Mapping matchType</from><to>Mapping device</to><enabled>Y</enabled> </hop>
   <hop> <from>Mapping device</from><to>Group by</to><enabled>Y</enabled> </hop>
   <hop> <from>Group by</from><to>Sort output data</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get output filename</from><to>Export output</to><enabled>N</enabled> </hop>
-  <hop> <from>Sort output data</from><to>Get output filename</to><enabled>N</enabled> </hop>
-  <hop> <from>9.Get mappingLevel, matchType</from><to>Mapping account_id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get output filename</from><to>Export output</to><enabled>Y</enabled> </hop>
+  <hop> <from>Sort output data</from><to>Get output filename</to><enabled>Y</enabled> </hop>
+  <hop> <from>9.Get mappingLevel</from><to>Mapping account_id</to><enabled>Y</enabled> </hop>
   <hop> <from>Mapping account_id</from><to>9.Select values</to><enabled>Y</enabled> </hop>
   <hop> <from>8.Filter rows</from><to>Dummy11</to><enabled>Y</enabled> </hop>
-  <hop> <from>1.Select values</from><to>Union2</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Select values</from><to>2.Union</to><enabled>Y</enabled> </hop>
   <hop> <from>1. Sort CV file</from><to>1.Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>1.Merge Join</from><to>1.Select values</to><enabled>Y</enabled> </hop>
   <hop> <from>1.Sort media file</from><to>1.Merge Join</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get start_date, end_date</from><to>Filter media, sumCV, Date</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>1. Sort CV file</name>
@@ -209,14 +209,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>1.Filter null rows</name>
+    <name>1.Filter rows</name>
     <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -226,15 +226,15 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>2.Sort media file</send_true_to>
-<send_false_to>Dummy5</send_false_to>
+<send_true_to>1.Sort media file</send_true_to>
+<send_false_to>Dummy4</send_false_to>
     <compare>
 <condition>
  <negated>N</negated>
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>Campaign_ID</leftvalue>
+   <leftvalue>campaign.id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
@@ -243,14 +243,14 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2480</xloc>
+      <xloc>2400</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>1.Get mappingLevel, matchType</name>
+    <name>1.Get mappingLevel</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -273,7 +273,35 @@
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>1.Merge Join</name>
+    <type>MergeJoin</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<join_type>INNER</join_type>
+<step1>1. Sort CV file</step1>
+<step2>1.Sort media file</step2>
+    <keys_1>
+      <key>campaign_id</key>
+    </keys_1>
+    <keys_2>
+      <key>campaign.id</key>
+    </keys_2>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2784</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
       </GUI>
@@ -362,7 +390,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>352</xloc>
+      <xloc>288</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -399,7 +427,7 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Campaign_ID_1</name>
+      </field>      <field>        <name>campaign.id</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -515,7 +543,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Campaign_ID_1</name>
+      </meta>      <meta>        <name>campaign.id</name>
         <rename>searchEngineCampaignId</rename>
         <type>String</type>
         <length>-2</length>
@@ -592,8 +620,61 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>3008</xloc>
+      <xloc>2928</xloc>
       <yloc>16</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>1.Sort media file</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
+      <prefix>out</prefix>
+      <sort_size>1000000</sort_size>
+      <free_memory/>
+      <compress>N</compress>
+      <compress_variable/>
+      <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>campaign.id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2624</xloc>
+      <yloc>80</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>1.Union</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>432</xloc>
+      <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -640,14 +721,14 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2480</xloc>
+      <xloc>2400</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>2.Get mappingLevel, matchType</name>
+    <name>2.Get mappingLevel</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -670,7 +751,7 @@
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
       </GUI>
@@ -702,7 +783,7 @@
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2864</xloc>
+      <xloc>2784</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
       </GUI>
@@ -791,7 +872,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>352</xloc>
+      <xloc>288</xloc>
       <yloc>912</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1021,7 +1102,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>3008</xloc>
+      <xloc>2928</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1067,7 +1148,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1113,15 +1194,15 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>1.Sort media file</name>
-    <type>SortRows</type>
+    <name>2.Union</name>
+    <type>Dummy</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1130,25 +1211,10 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-      <directory>&#x25;&#x25;java.io.tmpdir&#x25;&#x25;</directory>
-      <prefix>out</prefix>
-      <sort_size>1000000</sort_size>
-      <free_memory/>
-      <compress>N</compress>
-      <compress_variable/>
-      <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>Campaign_ID</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <presorted>N</presorted>
-      </field>
-    </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
-      <yloc>80</yloc>
+      <xloc>3328</xloc>
+      <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1195,7 +1261,7 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2480</xloc>
+      <xloc>2400</xloc>
       <yloc>464</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1225,7 +1291,7 @@
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1257,7 +1323,7 @@
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2864</xloc>
+      <xloc>2784</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1487,7 +1553,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>3008</xloc>
+      <xloc>2928</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1533,7 +1599,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1579,7 +1645,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>464</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1627,14 +1693,14 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2480</xloc>
+      <xloc>2400</xloc>
       <yloc>672</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>4.Get mappingLevel, matchType</name>
+    <name>4.Get mappingLevel</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -1657,7 +1723,7 @@
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>608</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1689,7 +1755,7 @@
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2864</xloc>
+      <xloc>2784</xloc>
       <yloc>608</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1919,7 +1985,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>3008</xloc>
+      <xloc>2928</xloc>
       <yloc>608</yloc>
       <draw>Y</draw>
       </GUI>
@@ -1965,7 +2031,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>608</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2011,7 +2077,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>672</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2059,14 +2125,14 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2480</xloc>
+      <xloc>2400</xloc>
       <yloc>864</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>5.Get mappingLevel, matchType</name>
+    <name>5.Get mappingLevel</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -2089,7 +2155,7 @@
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2121,7 +2187,7 @@
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2864</xloc>
+      <xloc>2784</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2351,7 +2417,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>3008</xloc>
+      <xloc>2928</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2397,7 +2463,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2443,7 +2509,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>864</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2491,7 +2557,7 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2480</xloc>
+      <xloc>2400</xloc>
       <yloc>1056</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2521,7 +2587,7 @@
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>992</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2553,7 +2619,7 @@
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2864</xloc>
+      <xloc>2784</xloc>
       <yloc>992</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2783,7 +2849,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>3008</xloc>
+      <xloc>2928</xloc>
       <yloc>992</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2829,7 +2895,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>992</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2875,7 +2941,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>1056</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2923,14 +2989,14 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2480</xloc>
+      <xloc>2400</xloc>
       <yloc>1248</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>7.Get mappingLevel, matchType</name>
+    <name>7.Get mappingLevel</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -2953,7 +3019,7 @@
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>1184</yloc>
       <draw>Y</draw>
       </GUI>
@@ -2985,7 +3051,7 @@
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2864</xloc>
+      <xloc>2784</xloc>
       <yloc>1184</yloc>
       <draw>Y</draw>
       </GUI>
@@ -3215,7 +3281,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>3008</xloc>
+      <xloc>2928</xloc>
       <yloc>1184</yloc>
       <draw>Y</draw>
       </GUI>
@@ -3243,7 +3309,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>1184</yloc>
       <draw>Y</draw>
       </GUI>
@@ -3289,7 +3355,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>1248</yloc>
       <draw>Y</draw>
       </GUI>
@@ -3337,14 +3403,14 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2480</xloc>
+      <xloc>2400</xloc>
       <yloc>1440</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>8.Get mappingLevel, matchType</name>
+    <name>8.Get mappingLevel</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -3367,7 +3433,7 @@
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>1376</yloc>
       <draw>Y</draw>
       </GUI>
@@ -3399,7 +3465,7 @@
     </keys_2>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2864</xloc>
+      <xloc>2784</xloc>
       <yloc>1376</yloc>
       <draw>Y</draw>
       </GUI>
@@ -3629,7 +3695,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>3008</xloc>
+      <xloc>2928</xloc>
       <yloc>1376</yloc>
       <draw>Y</draw>
       </GUI>
@@ -3675,7 +3741,7 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>1376</yloc>
       <draw>Y</draw>
       </GUI>
@@ -3721,14 +3787,14 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>1440</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>9.Get mappingLevel, matchType</name>
+    <name>9.Get mappingLevel</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -3751,7 +3817,7 @@
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>1568</yloc>
       <draw>Y</draw>
       </GUI>
@@ -3981,7 +4047,7 @@
         <storage_type/>
       </meta>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>3008</xloc>
+      <xloc>2928</xloc>
       <yloc>1568</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4114,7 +4180,7 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4217,7 +4283,7 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>80</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4365,7 +4431,7 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>464</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4498,7 +4564,7 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>672</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4517,7 +4583,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2176</xloc>
+      <xloc>2096</xloc>
       <yloc>16</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4551,7 +4617,7 @@
 <target_step>MICROSOFT</target_step>
 </case></cases>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1792</xloc>
+      <xloc>1632</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4570,7 +4636,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>896</xloc>
+      <xloc>832</xloc>
       <yloc>912</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4589,7 +4655,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>1312</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4608,7 +4674,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>1504</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4627,7 +4693,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1040</xloc>
+      <xloc>976</xloc>
       <yloc>912</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4646,7 +4712,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1792</xloc>
+      <xloc>1632</xloc>
       <yloc>896</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4665,7 +4731,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4684,7 +4750,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4703,7 +4769,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>528</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4722,7 +4788,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>736</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4741,7 +4807,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>928</yloc>
       <draw>Y</draw>
       </GUI>
@@ -4760,7 +4826,7 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2704</xloc>
+      <xloc>2624</xloc>
       <yloc>1120</yloc>
       <draw>Y</draw>
       </GUI>
@@ -5197,6 +5263,7 @@
  <conditions>
   <condition>
    <negated>N</negated>
+   <operator>AND</operator>
    <leftvalue>media</leftvalue>
    <function>IS NOT NULL</function>
    <rightvalue/>
@@ -5208,12 +5275,31 @@
    <function>&#x3e;</function>
    <rightvalue/>
    <value><name>constant</name><type>Number</type><text>0.0</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask>&#x23;.&#x23;&#x3b;-&#x23;.&#x23;</mask></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <conditions>
+    <condition>
+     <negated>N</negated>
+     <leftvalue>Date</leftvalue>
+     <function>&#x3e;&#x3d;</function>
+     <rightvalue>start_date</rightvalue>
+     </condition>
+    <condition>
+     <negated>N</negated>
+     <operator>AND</operator>
+     <leftvalue>Date</leftvalue>
+     <function>&#x3c;&#x3d;</function>
+     <rightvalue>end_date</rightvalue>
+     </condition>
+    </conditions>
+   </condition>
   </conditions>
  </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1600</xloc>
+      <xloc>1472</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -5242,7 +5328,7 @@
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>896</xloc>
+      <xloc>832</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -5268,7 +5354,7 @@
 </formula>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1280</xloc>
+      <xloc>1184</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -5664,7 +5750,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </fields><clear_result_fields>N</clear_result_fields>
 <info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1040</xloc>
+      <xloc>976</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -5693,7 +5779,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>768</xloc>
+      <xloc>704</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -5813,7 +5899,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1424</xloc>
+      <xloc>1312</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -5823,7 +5909,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <name>Get target_filename</name>
     <type>UserDefinedJavaClass</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -5922,7 +6008,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </fields><clear_result_fields>N</clear_result_fields>
 <info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>624</xloc>
+      <xloc>560</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -5967,9 +6053,6 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
           <name>searchEngineKeywordId</name>
         </field>
         <field>
-          <name>device</name>
-        </field>
-        <field>
           <name>mappingLevel</name>
         </field>
         <field>
@@ -5977,6 +6060,9 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         </field>
         <field>
           <name>media</name>
+        </field>
+        <field>
+          <name>device</name>
         </field>
       </group>
       <fields>
@@ -6122,7 +6208,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2160</xloc>
+      <xloc>2080</xloc>
       <yloc>1568</yloc>
       <draw>Y</draw>
       </GUI>
@@ -6154,7 +6240,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2864</xloc>
+      <xloc>2784</xloc>
       <yloc>1568</yloc>
       <draw>Y</draw>
       </GUI>
@@ -6821,7 +6907,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>208</xloc>
+      <xloc>144</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -6851,7 +6937,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <replace>N</replace>
       </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>208</xloc>
+      <xloc>144</xloc>
       <yloc>912</yloc>
       <draw>Y</draw>
       </GUI>
@@ -6946,44 +7032,6 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </step>
 
   <step>
-    <name>Union</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>496</xloc>
-      <yloc>800</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Union2</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>3328</xloc>
-      <yloc>800</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
     <name>YDN</name>
     <type>Dummy</type>
     <description/>
@@ -6996,7 +7044,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2160</xloc>
+      <xloc>2080</xloc>
       <yloc>1376</yloc>
       <draw>Y</draw>
       </GUI>
@@ -7124,7 +7172,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>1440</yloc>
       <draw>Y</draw>
       </GUI>
@@ -7143,7 +7191,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2160</xloc>
+      <xloc>2080</xloc>
       <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
@@ -7316,7 +7364,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>864</yloc>
       <draw>Y</draw>
       </GUI>
@@ -7504,7 +7552,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>1056</yloc>
       <draw>Y</draw>
       </GUI>
@@ -7677,7 +7725,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2368</xloc>
+      <xloc>2288</xloc>
       <yloc>1248</yloc>
       <draw>Y</draw>
       </GUI>
@@ -7711,36 +7759,8 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1168</xloc>
+      <xloc>1072</xloc>
       <yloc>800</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>1.Merge Join</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<join_type>INNER</join_type>
-<step1>1. Sort CV file</step1>
-<step2>1.Sort media file</step2>
-    <keys_1>
-      <key>campaign_id</key>
-    </keys_1>
-    <keys_2>
-      <key>Campaign_ID</key>
-    </keys_2>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2864</xloc>
-      <yloc>16</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

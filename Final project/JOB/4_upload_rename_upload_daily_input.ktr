@@ -76,62 +76,11 @@
   <notepads>
   </notepads>
   <order>
-  <hop> <from>Get is_rename_upload</from><to>Filter rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter rows</from><to>Dummy &#x28;do nothing&#x29;</to><enabled>Y</enabled> </hop>
   <hop> <from>Request access token</from><to>Get access token</to><enabled>Y</enabled> </hop>
   <hop> <from>Get access token</from><to>Rename and upload daily input file</to><enabled>N</enabled> </hop>
   <hop> <from>Read json client secret</from><to>Set request params</to><enabled>Y</enabled> </hop>
-  <hop> <from>Set request params</from><to>Get is_rename_upload</to><enabled>Y</enabled> </hop>
-  <hop> <from>Filter rows</from><to>Request access token</to><enabled>Y</enabled> </hop>
+  <hop> <from>Set request params</from><to>Request access token</to><enabled>Y</enabled> </hop>
   </order>
-  <step>
-    <name>Dummy &#x28;do nothing&#x29;</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>608</xloc>
-      <yloc>320</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Request access token</send_true_to>
-<send_false_to>Dummy &#x28;do nothing&#x29;</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>is_rename_upload</leftvalue>
- <function>&#x3d;</function>
- <rightvalue/>
- <value><name>constant</name><type>String</type><text>TRUE</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value> </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>480</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
   <step>
     <name>Get access token</name>
     <type>JsonInput</type>
@@ -190,40 +139,7 @@
     <sizeFieldName/>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>736</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Get is_rename_upload</name>
-    <type>GetVariable</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <name>is_rename_upload</name>
-        <variable>&#x24;&#x7b;IS_RENAME_UPLOAD_INPUT&#x7d;</variable>
-        <type>String</type>
-        <format/>
-        <currency/>
-        <decimal/>
-        <group/>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>336</xloc>
+      <xloc>464</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
       </GUI>
@@ -370,85 +286,81 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
   Object[] outputRowData = RowDataUtil.resizeArray(r, data.outputRowMeta.size());
   int outputListFilesInfex = getInputRowMeta().size();
 // start code
-	String access_token = get(Fields.In, "access_token").getString(r);
-	String GG_DRIVE_UPLOAD_URL = getVariable("GG_DRIVE_UPLOAD_FILE_URL","r");
-	String INPUT_EXCV_FOLDER_ID = getVariable("INPUT_EXCV_FOLDER_ID","r");
-	String PATH = getVariable("Internal.Job.Filename.Directory","r");
-	String PARAM_INPUT_FILE_NAME = getVariable("PARAM_INPUT_FILE_NAME","r");
-	String path = PATH.replace("file://","");
+	String IS_RENAME_UPLOAD_INPUT = getVariable("IS_RENAME_UPLOAD_INPUT","r");
 	String responseMess = "";
-
-	String[] inputArr = PARAM_INPUT_FILE_NAME.split(";");
-    for(int i = 0; i < inputArr.length; i++){
-        String filePath = path + "\\..\\input\\exCV\\" + inputArr[i];
-        System.out.println(filePath);
-        try {
-            URL url = new URL(GG_DRIVE_UPLOAD_URL);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setDoOutput(true);
-            connection.setRequestProperty("Authorization", "Bearer " + access_token);
-            connection.setRequestProperty("Content-Type", "multipart/related; boundary=foo_bar_baz");
-
-            String boundary = "foo_bar_baz";
-            String newLine = "\r\n";
-            String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1);
-
-            Calendar cal = Calendar.getInstance();
-            Date today = new Date();
-            cal.setTime(today);
-            cal.set(Calendar.HOUR_OF_DAY, 0);
-            cal.set(Calendar.MINUTE, 0);
-            cal.set(Calendar.SECOND,0);
-            cal.set(Calendar.MILLISECOND,0);
-            today = cal.getTime();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-            String dateStr = sdf.format(today);
-            fileName = fileName.replace("yyyyMMdd",dateStr);
-            filePath = filePath.replace("_yyyyMMdd","");
-
-            OutputStream outputStream = connection.getOutputStream();
-            DataOutputStream writer = new DataOutputStream(outputStream);
-
-            writer.writeBytes("--" + boundary + newLine);
-            writer.writeBytes("Content-Type: application/json; charset=UTF-8" + newLine);
-            writer.writeBytes(newLine);
-
-            String metaData = "{" + "\"name\": \"" + fileName + "\"," + "\"parents\": [\"" + INPUT_EXCV_FOLDER_ID + "\"]" + "}";
-            writer.writeBytes(metaData);
-            writer.writeBytes(newLine);
-
-            writer.writeBytes("--" + boundary + newLine);
-            writer.writeBytes("Content-Type: application/text-plain" + newLine);
-            writer.writeBytes(newLine);
-
-            FileInputStream fileInputStream = new FileInputStream(filePath);
-            byte[] buffer = new byte[4096];
-            int bytesRead = -1;
-            while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-                writer.write(buffer, 0, bytesRead);
-            }
-            writer.writeBytes(newLine);
-            writer.writeBytes("--" + boundary + "--" + newLine);
-
-            int responseCode = connection.getResponseCode();
-            Scanner scanner = new Scanner(connection.getInputStream());
-            while (scanner.hasNext()) {
-                responseMess += scanner.nextLine();
-            }
-            //logBasic(responseMess);
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                //logBasic("DEV: OK");
-            } else {
-                //logBasic("DEV: FAILED");
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	//if(IS_RENAME_UPLOAD_INPUT.equals("TRUE")){
+		String access_token = get(Fields.In, "access_token").getString(r);
+        String GG_DRIVE_UPLOAD_URL = getVariable("GG_DRIVE_UPLOAD_FILE_URL","r");
+        String INPUT_EXCV_FOLDER_ID = getVariable("INPUT_EXCV_FOLDER_ID","r");
+        String PATH = getVariable("Internal.Job.Filename.Directory","r");
+        String PARAM_INPUT_FILE_NAME = getVariable("PARAM_INPUT_FILE_NAME","r");
+        String path = PATH.replace("file://","");
+        
+        String[] inputArr = PARAM_INPUT_FILE_NAME.split(";");
+        for(int i = 0; i < inputArr.length; i++){
+            String filePath = path + "\\..\\input\\exCV\\" + inputArr[i];
+            System.out.println(filePath);
+            try {
+                URL url = new URL(GG_DRIVE_UPLOAD_URL);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setDoOutput(true);
+                connection.setRequestProperty("Authorization", "Bearer " + access_token);
+                connection.setRequestProperty("Content-Type", "multipart/related; boundary=foo_bar_baz");
+    
+                String boundary = "foo_bar_baz";
+                String newLine = "\r\n";
+                String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1);
+    
+                Calendar cal = Calendar.getInstance();
+                Date today = new Date();
+                cal.setTime(today);
+                cal.set(Calendar.HOUR_OF_DAY, 0);
+                cal.set(Calendar.MINUTE, 0);
+                cal.set(Calendar.SECOND,0);
+                cal.set(Calendar.MILLISECOND,0);
+                today = cal.getTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                String dateStr = sdf.format(today);
+                fileName = fileName.replace("yyyyMMdd",dateStr);
+                filePath = filePath.replace("_yyyyMMdd","");
+    
+                OutputStream outputStream = connection.getOutputStream();
+                DataOutputStream writer = new DataOutputStream(outputStream);
+    
+                writer.writeBytes("--" + boundary + newLine);
+                writer.writeBytes("Content-Type: application/json; charset=UTF-8" + newLine);
+                writer.writeBytes(newLine);
+    
+                String metaData = "{" + "\"name\": \"" + fileName + "\"," + "\"parents\": [\"" + INPUT_EXCV_FOLDER_ID + "\"]" + "}";
+                writer.writeBytes(metaData);
+                writer.writeBytes(newLine);
+    
+                writer.writeBytes("--" + boundary + newLine);
+                writer.writeBytes("Content-Type: application/text-plain" + newLine);
+                writer.writeBytes(newLine);
+    
+                FileInputStream fileInputStream = new FileInputStream(filePath);
+                byte[] buffer = new byte[4096];
+                int bytesRead = -1;
+                while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+                    writer.write(buffer, 0, bytesRead);
+                }
+                writer.writeBytes(newLine);
+                writer.writeBytes("--" + boundary + "--" + newLine);
+    
+                int responseCode = connection.getResponseCode();
+                Scanner scanner = new Scanner(connection.getInputStream());
+                while (scanner.hasNext()) {
+                    responseMess += scanner.nextLine();
+                }
+                
+            } catch (IOException e) {
+                e.printStackTrace();
+    	}
+	//}
 // end code
-  outputRowData[outputListFilesInfex ] = responseMess;
+  //outputRowData[outputListFilesInfex ] = responseMess;
   putRow(data.outputRowMeta, outputRowData);
   return true;
 }]]></class_source>
@@ -468,7 +380,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </fields><clear_result_fields>N</clear_result_fields>
 <info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>896</xloc>
+      <xloc>624</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
       </GUI>
@@ -533,7 +445,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       </result>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>608</xloc>
+      <xloc>336</xloc>
       <yloc>208</yloc>
       <draw>Y</draw>
       </GUI>
