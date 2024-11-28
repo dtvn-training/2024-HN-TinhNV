@@ -1,0 +1,21 @@
+- lấy access token 
+- header: 
+	Authorization: Bearer token
+	Content-Type: multipart/related; boundary=foo_bar_baz
+- body: 
+	--boundary
+	Content-Type: application/json; charset=UTF-8
+	--boundary
+	{
+  	  tên file 
+	  folderId
+	}
+	--boundary
+	Content-Type header of any MIME type
+	--boundary
+	Dữ liệu trong file
+	--boundary--
+- upload request url POST https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart
+
+
+
