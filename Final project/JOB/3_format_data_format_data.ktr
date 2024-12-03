@@ -5923,12 +5923,10 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 
         <class_name>Processor</class_name>
 
-        <class_source><![CDATA[import java.util.*;
+        <class_source><![CDATA[import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Calendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.*;
+import java.util.regex.*;
 
 public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
 {
@@ -5946,8 +5944,13 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 // start code
 	Date date = get(Fields.In, "Date").getDate(r);
 	String file_name = get(Fields.In, "input_file_name").getString(r);
+	String filename_date_string = getVariable("FILENAME_DATE_STRING","r");
+	String target_date = "";
+	String target_filename = ""; 
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
-	String fileDate = "";
+    String fileDate = "";
+
+    ////lay date cua file input
     String regex = "(\\d{8})";
     Pattern pattern = Pattern.compile(regex);
     Matcher matcher = pattern.matcher(file_name);
@@ -5955,10 +5958,22 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         fileDate = matcher.group(1);
     }
 
-    String target_filename = "";
-    if(fileDate.equals("")){
+    if(fileDate.equals("")){ ///file daily
         target_filename = file_name;
-    }else{
+    }else{ ///file qua khu
+        /// lay listDate la danh sach cac ngay file input 
+        String[] dateStrArr = filename_date_string.split(";");
+		Date[] listDate = new Date[dateStrArr.length];
+        try {
+            for(int i = 0; i < dateStrArr.length; i++)
+                if(!dateStrArr[i].equals(" ")){
+                	listDate[i] = formatter.parse(dateStrArr[i]);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        ///lay today
         Calendar cal = Calendar.getInstance();
         Date today = new Date();
         cal.setTime(today);
@@ -5967,25 +5982,40 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         cal.set(Calendar.SECOND,0);
         cal.set(Calendar.MILLISECOND,0);
         today = cal.getTime();
-        Date targetDate = new Date();
-        
+
+        ///lay targetDate tu CV date
         cal.setTime(date);
         cal.add(Calendar.DATE, 61);
         Date fileNameDate = cal.getTime();
+        Date targetDate;
         if(fileNameDate.before(today)){
             targetDate = fileNameDate;
         }else{
             targetDate = today;
         }
-        System.out.println(targetDate);
-        System.out.println(today);
+		//// so sanh target date voi listDate de tim file chua data moi nhat
         if(targetDate.equals(today)){
-            String _fileDate = "_" + fileDate;
-            target_filename = file_name.replace(_fileDate,"");
+            target_date = "daily";
         }else{
-            String target_date = formatter.format(targetDate);
+            
+            Date startDate = listDate[0];
+            Date endDate = listDate[listDate.length - 1];
+            if (targetDate.equals(startDate) || targetDate.equals(endDate) || (targetDate.after(startDate) && targetDate.before(endDate))) {
+                target_date = formatter.format(targetDate);
+            } else if (targetDate.after(endDate)) {
+                target_date = formatter.format(endDate);
+            }
+        }
+
+        ///tao target_filename tu target_date
+        if(target_date.equals("daily")){
+            String _fileDate = '_' + fileDate;
+            target_filename = file_name.replace(_fileDate,"");
+        }
+        else {
             target_filename = file_name.replace(fileDate,target_date);
         }
+
     }
 // end code
   outputRowData[outputListFilesInfex ] = target_filename;

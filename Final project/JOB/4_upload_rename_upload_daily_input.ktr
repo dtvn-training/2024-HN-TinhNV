@@ -77,7 +77,7 @@
   </notepads>
   <order>
   <hop> <from>Request access token</from><to>Get access token</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get access token</from><to>Rename and upload daily input file</to><enabled>N</enabled> </hop>
+  <hop> <from>Get access token</from><to>Rename and upload daily input file</to><enabled>Y</enabled> </hop>
   <hop> <from>Read json client secret</from><to>Set request params</to><enabled>Y</enabled> </hop>
   <hop> <from>Set request params</from><to>Request access token</to><enabled>Y</enabled> </hop>
   </order>
@@ -286,20 +286,18 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
   Object[] outputRowData = RowDataUtil.resizeArray(r, data.outputRowMeta.size());
   int outputListFilesInfex = getInputRowMeta().size();
 // start code
-	String IS_RENAME_UPLOAD_INPUT = getVariable("IS_RENAME_UPLOAD_INPUT","r");
+	String access_token = get(Fields.In, "access_token").getString(r);
+	String GG_DRIVE_UPLOAD_URL = getVariable("GG_DRIVE_UPLOAD_FILE_URL","r");
+	String INPUT_EXCV_FOLDER_ID = getVariable("INPUT_EXCV_FOLDER_ID","r");
+	String PATH = getVariable("Internal.Job.Filename.Directory","r");
+	String path = PATH.replace("file://","");
 	String responseMess = "";
-	//if(IS_RENAME_UPLOAD_INPUT.equals("TRUE")){
-		String access_token = get(Fields.In, "access_token").getString(r);
-        String GG_DRIVE_UPLOAD_URL = getVariable("GG_DRIVE_UPLOAD_FILE_URL","r");
-        String INPUT_EXCV_FOLDER_ID = getVariable("INPUT_EXCV_FOLDER_ID","r");
-        String PATH = getVariable("Internal.Job.Filename.Directory","r");
-        String PARAM_INPUT_FILE_NAME = getVariable("PARAM_INPUT_FILE_NAME","r");
-        String path = PATH.replace("file://","");
-        
-        String[] inputArr = PARAM_INPUT_FILE_NAME.split(";");
+	String IS_RENAME_UPLOAD_INPUT = getVariable("IS_RENAME_UPLOAD_INPUT","r");
+	String PARAM_INPUT_FILE_NAME = getVariable("PARAM_INPUT_FILE_NAME","r"); 
+	if(IS_RENAME_UPLOAD_INPUT.equals("TRUE")){
+    	String[] inputArr = PARAM_INPUT_FILE_NAME.split(";");
         for(int i = 0; i < inputArr.length; i++){
             String filePath = path + "\\..\\input\\exCV\\" + inputArr[i];
-            System.out.println(filePath);
             try {
                 URL url = new URL(GG_DRIVE_UPLOAD_URL);
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -357,10 +355,12 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
                 
             } catch (IOException e) {
                 e.printStackTrace();
+			}
     	}
-	//}
+	}
+            
 // end code
-  //outputRowData[outputListFilesInfex ] = responseMess;
+  outputRowData[outputListFilesInfex ] = responseMess;
   putRow(data.outputRowMeta, outputRowData);
   return true;
 }]]></class_source>

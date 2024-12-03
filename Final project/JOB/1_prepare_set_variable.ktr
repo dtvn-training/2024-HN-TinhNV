@@ -259,14 +259,14 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 
                 StringBuilder dates = new StringBuilder();
                 Date currentDate = filename_start_date;
-                while(!currentDate.equals(filename_end_date)){
+                while(currentDate.before(filename_end_date)){
                     String currentDateStr = formatter.format(currentDate);
-                    dates.append(currentDateStr).append(";");
+                    dates.append(currentDateStr);
                     cal.setTime(currentDate);
                     cal.add(Calendar.DATE,1);
                     currentDate = cal.getTime();
+                    if(currentDate.before(filename_end_date)) dates.append(";");
                 }
-                dates.append(formatter.format(currentDate));
                 filename_date_string = dates.toString();
             }
             else if (start_date.compareTo(from_date) < 0){ // nua trong nua ngoai
@@ -280,14 +280,15 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 
                 StringBuilder dates = new StringBuilder();
                 Date currentDate = filename_start_date;
-                while(!currentDate.equals(filename_end_date)){
+                while(currentDate.before(filename_end_date)){
                     String currentDateStr = formatter.format(currentDate);
-                    dates.append(currentDateStr).append(";");
+                    dates.append(currentDateStr);
                     cal.setTime(currentDate);
                     cal.add(Calendar.DATE,1);
                     currentDate = cal.getTime();
+                    if(currentDate.before(filename_end_date)) dates.append(";");
                 }
-                dates.append(formatter.format(currentDate)).append("; ");
+                dates.append("; ");
                 filename_date_string = dates.toString();
             }
         } catch (ParseException e) {
@@ -330,6 +331,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
   outputRowData[++outputListFilesInfex ] = start_date;
   outputRowData[++outputListFilesInfex ] = end_date;
   outputRowData[++outputListFilesInfex ] = is_default;
+  outputRowData[++outputListFilesInfex ] = filename_date_string;
   putRow(data.outputRowMeta, outputRowData);
   return true;
 }]]></class_source>
@@ -386,6 +388,16 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <field_precision>-1</field_precision>
 
         </field>
+        <field>
+        <field_name>filename_date_string</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
     </fields><clear_result_fields>N</clear_result_fields>
 <info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -434,6 +446,12 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
       <field>
         <field_name>Quote_fille_name</field_name>
         <variable_name>QUOTE_INPUT_FILE_NAME</variable_name>
+        <variable_type>JVM</variable_type>
+        <default_value/>
+        </field>
+      <field>
+        <field_name>filename_date_string</field_name>
+        <variable_name>FILENAME_DATE_STRING</variable_name>
         <variable_type>JVM</variable_type>
         <default_value/>
         </field>
