@@ -76,6 +76,8 @@
   <notepads>
   </notepads>
   <order>
+  <hop> <from>ADWORDS</from><to>3.Get mappingLevel</to><enabled>Y</enabled> </hop>
+  <hop> <from>3.Get mappingLevel</from><to>3.Filter rows</to><enabled>Y</enabled> </hop>
   <hop> <from>Set Value_01</from><to>1.Select date, device, tracking code</to><enabled>Y</enabled> </hop>
   <hop> <from>Set Value_02</from><to>2.Select date, device, tracking code</to><enabled>Y</enabled> </hop>
   <hop> <from>1.Select date, device, tracking code</from><to>1.Union</to><enabled>Y</enabled> </hop>
@@ -83,7 +85,6 @@
   <hop> <from>Read NB files</from><to>Set Value_01</to><enabled>Y</enabled> </hop>
   <hop> <from>Read Quote file</from><to>Set Value_02</to><enabled>Y</enabled> </hop>
   <hop> <from>1.Union</from><to>Get target_filename</to><enabled>Y</enabled> </hop>
-  <hop> <from>Get target_filename</from><to>Get newest data</to><enabled>Y</enabled> </hop>
   <hop> <from>Get newest data</from><to>Dummy1</to><enabled>Y</enabled> </hop>
   <hop> <from>Get newest data</from><to>Filter null tracking code</to><enabled>Y</enabled> </hop>
   <hop> <from>Filter null tracking code</from><to>Get componentId</to><enabled>Y</enabled> </hop>
@@ -99,44 +100,17 @@
   <hop> <from>Classify media</from><to>MICROSOFT</to><enabled>Y</enabled> </hop>
   <hop> <from>ADWORDS</from><to>1.Get mappingLevel</to><enabled>Y</enabled> </hop>
   <hop> <from>ADWORDS</from><to>2.Get mappingLevel</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADWORDS</from><to>3.Get mappingLevel</to><enabled>Y</enabled> </hop>
   <hop> <from>ADWORDS</from><to>4.Get mappingLevel</to><enabled>Y</enabled> </hop>
   <hop> <from>YSS</from><to>5.Get mappingLevel</to><enabled>Y</enabled> </hop>
   <hop> <from>YSS</from><to>6.Get mappingLevel</to><enabled>Y</enabled> </hop>
   <hop> <from>YSS</from><to>7.Get mappingLevel</to><enabled>Y</enabled> </hop>
   <hop> <from>YDN</from><to>8.Get mappingLevel</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADS ad</from><to>2.Filter rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADS keyword</from><to>3.Filter rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADS webpage</from><to>4.Filter rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>YSS ad</from><to>5.Filter rows </to><enabled>Y</enabled> </hop>
-  <hop> <from>YSS keyword</from><to>6.Filter rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>YSS webpage</from><to>7.Filter rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>YDN ad</from><to>8.Filter rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>2.Get mappingLevel</from><to>2.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>2.Filter rows</from><to>2.Sort media file</to><enabled>Y</enabled> </hop>
   <hop> <from>2.Filter rows</from><to>Dummy5</to><enabled>Y</enabled> </hop>
-  <hop> <from>3.Get mappingLevel</from><to>3.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>3.Filter rows</from><to>3.Sort media file</to><enabled>Y</enabled> </hop>
   <hop> <from>3.Filter rows</from><to>Dummy6</to><enabled>Y</enabled> </hop>
-  <hop> <from>4.Get mappingLevel</from><to>4.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>4.Filter rows</from><to>4.Sort media file</to><enabled>Y</enabled> </hop>
   <hop> <from>4.Filter rows</from><to>Dummy7</to><enabled>Y</enabled> </hop>
-  <hop> <from>5.Get mappingLevel</from><to>5.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>5.Filter rows </from><to>5.Sort media file</to><enabled>Y</enabled> </hop>
-  <hop> <from>6.Get mappingLevel</from><to>6.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>6.Filter rows</from><to>6.Sort media file </to><enabled>Y</enabled> </hop>
   <hop> <from>6.Filter rows</from><to>Dummy9</to><enabled>Y</enabled> </hop>
   <hop> <from>5.Filter rows </from><to>Dummy8</to><enabled>Y</enabled> </hop>
   <hop> <from>7.Filter rows</from><to>Dummy10</to><enabled>Y</enabled> </hop>
-  <hop> <from>7.Get mappingLevel</from><to>7.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>7.Filter rows</from><to>7.Sort media file</to><enabled>Y</enabled> </hop>
-  <hop> <from>8.Get mappingLevel</from><to>8.Sort CV file</to><enabled>Y</enabled> </hop>
-  <hop> <from>8.Filter rows</from><to>8.Sort media file</to><enabled>Y</enabled> </hop>
-  <hop> <from>MICROSOFT</from><to>9.Get mappingLevel</to><enabled>Y</enabled> </hop>
-  <hop> <from>1.Filter rows</from><to>1.Sort media file</to><enabled>Y</enabled> </hop>
-  <hop> <from>1.Filter rows</from><to>Dummy4</to><enabled>Y</enabled> </hop>
-  <hop> <from>ADS campaign</from><to>1.Filter rows</to><enabled>Y</enabled> </hop>
-  <hop> <from>1.Get mappingLevel</from><to>1. Sort CV file</to><enabled>Y</enabled> </hop>
   <hop> <from>2.Sort CV file</from><to>2.Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>2.Sort media file</from><to>2.Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>3.Sort CV file</from><to>3.Merge Join</to><enabled>Y</enabled> </hop>
@@ -172,14 +146,46 @@
   <hop> <from>Group by</from><to>Sort output data</to><enabled>Y</enabled> </hop>
   <hop> <from>Get output filename</from><to>Export output</to><enabled>Y</enabled> </hop>
   <hop> <from>Sort output data</from><to>Get output filename</to><enabled>Y</enabled> </hop>
-  <hop> <from>9.Get mappingLevel</from><to>Mapping account_id</to><enabled>Y</enabled> </hop>
-  <hop> <from>Mapping account_id</from><to>9.Select values</to><enabled>Y</enabled> </hop>
-  <hop> <from>8.Filter rows</from><to>Dummy11</to><enabled>Y</enabled> </hop>
   <hop> <from>1.Select values</from><to>2.Union</to><enabled>Y</enabled> </hop>
   <hop> <from>1. Sort CV file</from><to>1.Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>1.Merge Join</from><to>1.Select values</to><enabled>Y</enabled> </hop>
   <hop> <from>1.Sort media file</from><to>1.Merge Join</to><enabled>Y</enabled> </hop>
   <hop> <from>Get start_date, end_date</from><to>Filter media, sumCV, Date</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get target_filename</from><to>Get newest data</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Get mappingLevel</from><to>1.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADS campaign</from><to>1.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Filter rows</from><to>Dummy4</to><enabled>Y</enabled> </hop>
+  <hop> <from>1.Filter rows</from><to>1. Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>2.Get mappingLevel</from><to>2.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>2.Filter rows</from><to>2.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADS ad</from><to>2.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>3.Filter rows</from><to>3.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADS keyword</from><to>3.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>5.Get mappingLevel</from><to>5.Filter rows </to><enabled>Y</enabled> </hop>
+  <hop> <from>5.Filter rows </from><to>5.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>YSS ad</from><to>5.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>8.Get mappingLevel</from><to>8.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>YDN ad</from><to>8.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>MICROSOFT</from><to>MS kw</to><enabled>Y</enabled> </hop>
+  <hop> <from>MICROSOFT</from><to>MS ad</to><enabled>Y</enabled> </hop>
+  <hop> <from>8.Filter rows</from><to>8.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>8.Filter rows</from><to>Dummy11</to><enabled>Y</enabled> </hop>
+  <hop> <from>4.Get mappingLevel</from><to>4.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>ADS webpage</from><to>4.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>4.Filter rows</from><to>4.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>6.Get mappingLevel</from><to>6.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>YSS keyword</from><to>6.Sort media file </to><enabled>Y</enabled> </hop>
+  <hop> <from>6.Filter rows</from><to>6.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>7.Get mappingLevel</from><to>7.Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>7.Filter rows</from><to>7.Sort CV file</to><enabled>Y</enabled> </hop>
+  <hop> <from>YSS webpage</from><to>7.Sort media file</to><enabled>Y</enabled> </hop>
+  <hop> <from>3.Union</from><to>9.Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get ad id</from><to>10.Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>10.Select values</from><to>3.Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>MS kw</from><to>Get ad id</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get mappingLevel</from><to>11.Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>11.Select values</from><to>3.Union</to><enabled>Y</enabled> </hop>
+  <hop> <from>MS ad</from><to>Get mappingLevel</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>1. Sort CV file</name>
@@ -211,40 +217,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2624</xloc>
       <yloc>16</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>1.Filter rows</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>1.Sort media file</send_true_to>
-<send_false_to>Dummy4</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <conditions>
-  <condition>
-   <negated>N</negated>
-   <leftvalue>campaign.id</leftvalue>
-   <function>REGEXP</function>
-   <rightvalue/>
-   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
-  </conditions>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2400</xloc>
-      <yloc>80</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -655,7 +627,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2624</xloc>
-      <yloc>80</yloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -690,7 +662,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>2.Sort media file</send_true_to>
+<send_true_to>2.Sort CV file</send_true_to>
 <send_false_to>Dummy5</send_false_to>
     <compare>
 <condition>
@@ -698,31 +670,50 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>Campaign_ID</leftvalue>
+   <leftvalue>campaign_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Ad_group_ID</leftvalue>
+   <leftvalue>adgroup_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Ad_ID</leftvalue>
+   <leftvalue>ad_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <conditions>
+    <condition>
+     <negated>N</negated>
+     <leftvalue>campaign_id</leftvalue>
+     <function>IS NOT NULL</function>
+     <rightvalue/>
+     </condition>
+    <condition>
+     <negated>N</negated>
+     <operator>AND</operator>
+     <leftvalue>adgroup_id</leftvalue>
+     <function>IS NOT NULL</function>
+     <rightvalue/>
+     </condition>
+    </conditions>
+   </condition>
   </conditions>
  </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2400</xloc>
-      <yloc>272</yloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1195,7 +1186,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2624</xloc>
-      <yloc>272</yloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1230,7 +1221,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>3.Sort media file</send_true_to>
+<send_true_to>3.Sort CV file</send_true_to>
 <send_false_to>Dummy6</send_false_to>
     <compare>
 <condition>
@@ -1238,21 +1229,21 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>Campaign_ID</leftvalue>
+   <leftvalue>campaign_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Ad_group_ID</leftvalue>
+   <leftvalue>adgroup_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Keyword_ID</leftvalue>
+   <leftvalue>keyword_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
@@ -1262,7 +1253,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2400</xloc>
-      <yloc>464</yloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1282,7 +1273,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var mappingLevel &#x3d; keyword_mapping_level&#x3b;&#xd;&#xa;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var mappingLevel &#x3d; &#x22;keyword&#x22;&#x3b;&#xd;&#xa;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
         <type>String</type>
@@ -1376,7 +1367,7 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Keyword_MatchType</name>
+      </field>      <field>        <name>Keyword_MatchType_1</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -1536,7 +1527,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Keyword_MatchType</name>
+      </meta>      <meta>        <name>Keyword_MatchType_1</name>
         <rename>matchType</rename>
         <type>String</type>
         <length>-2</length>
@@ -1646,7 +1637,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2624</xloc>
-      <yloc>464</yloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1662,7 +1653,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>4.Sort media file</send_true_to>
+<send_true_to>4.Sort CV file</send_true_to>
 <send_false_to>Dummy7</send_false_to>
     <compare>
 <condition>
@@ -1670,21 +1661,21 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>Campaign_ID</leftvalue>
+   <leftvalue>campaign_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Ad_group_ID</leftvalue>
+   <leftvalue>adgroup_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Keyword_ID</leftvalue>
+   <leftvalue>keyword_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
@@ -1694,7 +1685,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2400</xloc>
-      <yloc>672</yloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -1714,7 +1705,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; keyword_mapping_level&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;dsa&#x22;&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
         <type>String</type>
@@ -2078,7 +2069,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2624</xloc>
-      <yloc>672</yloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2094,7 +2085,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>5.Sort media file</send_true_to>
+<send_true_to>5.Sort CV file</send_true_to>
 <send_false_to>Dummy8</send_false_to>
     <compare>
 <condition>
@@ -2102,31 +2093,50 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>Campaign_tracking_ID</leftvalue>
+   <leftvalue>campaign_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Ad_group_tracking_ID</leftvalue>
+   <leftvalue>adgroup_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Ad_tracking_ID</leftvalue>
+   <leftvalue>ad_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <conditions>
+    <condition>
+     <negated>N</negated>
+     <leftvalue>campaign_id</leftvalue>
+     <function>IS NOT NULL</function>
+     <rightvalue/>
+     </condition>
+    <condition>
+     <negated>N</negated>
+     <operator>AND</operator>
+     <leftvalue>adgroup_id</leftvalue>
+     <function>IS NOT NULL</function>
+     <rightvalue/>
+     </condition>
+    </conditions>
+   </condition>
   </conditions>
  </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2400</xloc>
-      <yloc>864</yloc>
+      <yloc>800</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2224,15 +2234,15 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Campaign_tracking_ID</name>
+      </field>      <field>        <name>Campaign_ID_1</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Ad_group_tracking_ID</name>
+      </field>      <field>        <name>Ad_group_ID</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Ad_tracking_ID</name>
+      </field>      <field>        <name>Ad_ID_1</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -2340,7 +2350,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Campaign_tracking_ID</name>
+      </meta>      <meta>        <name>Campaign_ID_1</name>
         <rename>searchEngineCampaignId</rename>
         <type>String</type>
         <length>-2</length>
@@ -2355,7 +2365,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Ad_group_tracking_ID</name>
+      </meta>      <meta>        <name>Ad_group_ID</name>
         <rename>searchEngineAdGroupId</rename>
         <type>String</type>
         <length>-2</length>
@@ -2370,7 +2380,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Ad_tracking_ID</name>
+      </meta>      <meta>        <name>Ad_ID_1</name>
         <rename>searchEngineAdId</rename>
         <type>String</type>
         <length>-2</length>
@@ -2510,7 +2520,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2624</xloc>
-      <yloc>864</yloc>
+      <yloc>928</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2526,7 +2536,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>6.Sort media file </send_true_to>
+<send_true_to>6.Sort CV file</send_true_to>
 <send_false_to>Dummy9</send_false_to>
     <compare>
 <condition>
@@ -2534,21 +2544,21 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>Campaign_tracking_ID</leftvalue>
+   <leftvalue>campaign_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Ad_group_tracking_ID</leftvalue>
+   <leftvalue>adgroup_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Keyword_tracking_ID</leftvalue>
+   <leftvalue>keyword_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
@@ -2558,7 +2568,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2400</xloc>
-      <yloc>1056</yloc>
+      <yloc>992</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2578,7 +2588,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; keyword_mapping_level&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;keyword&#x22;&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
         <type>String</type>
@@ -2656,11 +2666,11 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Campaign_tracking_ID</name>
+      </field>      <field>        <name>Campaign_ID_1</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Ad_group_tracking_ID</name>
+      </field>      <field>        <name>Ad_group_ID</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -2668,11 +2678,11 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Keyword_tracking_ID</name>
+      </field>      <field>        <name>Keyword_ID_1</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Keyword_MatchType</name>
+      </field>      <field>        <name>Keyword_MatchType_1</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -2772,7 +2782,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Campaign_tracking_ID</name>
+      </meta>      <meta>        <name>Campaign_ID_1</name>
         <rename>searchEngineCampaignId</rename>
         <type>String</type>
         <length>-2</length>
@@ -2787,7 +2797,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Ad_group_tracking_ID</name>
+      </meta>      <meta>        <name>Ad_group_ID</name>
         <rename>searchEngineAdGroupId</rename>
         <type>String</type>
         <length>-2</length>
@@ -2817,7 +2827,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Keyword_tracking_ID</name>
+      </meta>      <meta>        <name>Keyword_ID_1</name>
         <rename>searchEngineKeywordId</rename>
         <type>String</type>
         <length>-2</length>
@@ -2832,7 +2842,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Keyword_MatchType</name>
+      </meta>      <meta>        <name>Keyword_MatchType_1</name>
         <rename>matchType</rename>
         <type>String</type>
         <length>-2</length>
@@ -2942,7 +2952,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2624</xloc>
-      <yloc>1056</yloc>
+      <yloc>1104</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -2958,7 +2968,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>7.Sort media file</send_true_to>
+<send_true_to>7.Sort CV file</send_true_to>
 <send_false_to>Dummy10</send_false_to>
     <compare>
 <condition>
@@ -2966,21 +2976,21 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>Campaign_tracking_ID</leftvalue>
+   <leftvalue>campaign_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Ad_group_tracking_ID</leftvalue>
+   <leftvalue>adgroup_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Keyword_tracking_ID</leftvalue>
+   <leftvalue>keyword_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
@@ -2990,7 +3000,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2400</xloc>
-      <yloc>1248</yloc>
+      <yloc>1184</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3010,7 +3020,7 @@
     <optimizationLevel>9</optimizationLevel>
     <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var mappingLevel &#x3d; keyword_mapping_level&#x3b;</jsScript_script>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var mappingLevel &#x3d; &#x22;dsa&#x22;&#x3b;</jsScript_script>
       </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
         <rename>mappingLevel</rename>
         <type>String</type>
@@ -3088,11 +3098,11 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Campaign_tracking_ID</name>
+      </field>      <field>        <name>Campaign_ID_1</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Ad_group_tracking_ID</name>
+      </field>      <field>        <name>Ad_group_ID</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -3100,7 +3110,7 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Keyword_tracking_ID</name>
+      </field>      <field>        <name>Keyword_ID_1</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -3204,7 +3214,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Campaign_tracking_ID</name>
+      </meta>      <meta>        <name>Campaign_ID_1</name>
         <rename>searchEngineCampaignId</rename>
         <type>String</type>
         <length>-2</length>
@@ -3219,7 +3229,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Ad_group_tracking_ID</name>
+      </meta>      <meta>        <name>Ad_group_ID</name>
         <rename>searchEngineAdGroupId</rename>
         <type>String</type>
         <length>-2</length>
@@ -3249,7 +3259,7 @@
         <grouping_symbol/>
         <currency_symbol/>
         <storage_type/>
-      </meta>      <meta>        <name>Keyword_tracking_ID</name>
+      </meta>      <meta>        <name>Keyword_ID_1</name>
         <rename>searchEngineKeywordId</rename>
         <type>String</type>
         <length>-2</length>
@@ -3306,6 +3316,24 @@
       <compress_variable/>
       <unique_rows>N</unique_rows>
     <fields>
+      <field>
+        <name>campaign_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>adgroup_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>keyword_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <presorted>N</presorted>
+      </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
@@ -3356,7 +3384,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2624</xloc>
-      <yloc>1248</yloc>
+      <yloc>1296</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3372,7 +3400,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-<send_true_to>8.Sort media file</send_true_to>
+<send_true_to>8.Sort CV file</send_true_to>
 <send_false_to>Dummy11</send_false_to>
     <compare>
 <condition>
@@ -3380,31 +3408,50 @@
  <conditions>
   <condition>
    <negated>N</negated>
-   <leftvalue>Campaign_ID</leftvalue>
+   <leftvalue>campaign_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Ad_group_ID</leftvalue>
+   <leftvalue>adgroup_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
   <condition>
    <negated>N</negated>
    <operator>AND</operator>
-   <leftvalue>Ad_ID</leftvalue>
+   <leftvalue>ad_id</leftvalue>
    <function>REGEXP</function>
    <rightvalue/>
    <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <conditions>
+    <condition>
+     <negated>N</negated>
+     <leftvalue>campaign_id</leftvalue>
+     <function>IS NOT NULL</function>
+     <rightvalue/>
+     </condition>
+    <condition>
+     <negated>N</negated>
+     <operator>AND</operator>
+     <leftvalue>adgroup_id</leftvalue>
+     <function>IS NOT NULL</function>
+     <rightvalue/>
+     </condition>
+    </conditions>
+   </condition>
   </conditions>
  </condition>
     </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2400</xloc>
-      <yloc>1440</yloc>
+      <yloc>1376</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -3788,37 +3835,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2624</xloc>
-      <yloc>1440</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>9.Get mappingLevel</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;var mappingLevel &#x3d; keyword_mapping_level&#x3b;&#xd;&#xa;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
-        <rename>mappingLevel</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2288</xloc>
-      <yloc>1568</yloc>
+      <yloc>1488</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4181,7 +4198,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2288</xloc>
-      <yloc>272</yloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4284,7 +4301,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2288</xloc>
-      <yloc>80</yloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4432,7 +4449,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2288</xloc>
-      <yloc>464</yloc>
+      <yloc>496</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4565,7 +4582,7 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2288</xloc>
-      <yloc>672</yloc>
+      <yloc>704</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4655,8 +4672,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2624</xloc>
-      <yloc>1312</yloc>
+      <xloc>2528</xloc>
+      <yloc>1248</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4674,8 +4691,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2624</xloc>
-      <yloc>1504</yloc>
+      <xloc>2512</xloc>
+      <yloc>1440</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4731,8 +4748,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2624</xloc>
-      <yloc>144</yloc>
+      <xloc>2512</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4750,8 +4767,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2624</xloc>
-      <yloc>336</yloc>
+      <xloc>2512</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4769,8 +4786,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2624</xloc>
-      <yloc>528</yloc>
+      <xloc>2512</xloc>
+      <yloc>448</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4788,8 +4805,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2624</xloc>
-      <yloc>736</yloc>
+      <xloc>2512</xloc>
+      <yloc>656</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4807,8 +4824,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2624</xloc>
-      <yloc>928</yloc>
+      <xloc>2512</xloc>
+      <yloc>864</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -4826,8 +4843,8 @@
            </partitioning>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2624</xloc>
-      <yloc>1120</yloc>
+      <xloc>2528</xloc>
+      <yloc>1056</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -5399,46 +5416,52 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 	String YSS_ACCOUNT_ID = getVariable("PARAM_YSS_ACCOUNT_ID","r");
 	String YDN_ACCOUNT_ID = getVariable("PARAM_YDN_ACCOUNT_ID","r");
 	String MS_TEMPLATE_ID = getVariable("PARAM_MS_TEMPLATE_ID","r");
+	String MS_ACCOUNT_ID = getVariable("PARAM_MS_ACCOUNT_ID","r");
 	String trackingCode = get(Fields.In, "Fq_Banner_Id").getString(r);
-	String account_id = "";
-    String campaign_id = "";
-    String adgroup_id = "";
-    String ad_id = "";
-    String target_id = "";
-    String keyword_id = "";
-	String keyword_mapping_level = "";
-	String Keyword_MatchType = "";
+	String account_id = null;
+    String campaign_id = null;
+    String adgroup_id = null;
+    String ad_id = null;
+    String target_id = null;
+    String keyword_id = null;
+	String keyword_mapping_level = null;
+	String Keyword_MatchType = null;
 	String media = null;
 	String[] arrADS = ADS_ACCOUNT_ID.split(";");
     String[] inputArrStr = trackingCode.split("_");
 	
     if(inputArrStr.length > 0) {
-		account_id  = inputArrStr[0];
+		String tmp_account_id  = inputArrStr[0];
 		//get media
 		for(int i = 0; i < arrADS.length ; i++){
-        	if(account_id.equals(arrADS[i])){
+        	if(tmp_account_id.equals(arrADS[i])){
 				media = "ADWORDS";
+				account_id = tmp_account_id;
 			}
     	}
 
 		String[] arrYSS = YSS_ACCOUNT_ID.split(";");
 		for(int i = 0; i < arrYSS.length ; i++){
-        	if(account_id.equals(arrYSS[i])) {
+        	if(tmp_account_id.equals(arrYSS[i])) {
 				media = "YSS";
+				account_id = tmp_account_id;
 			}
     	}
 		
 		String[] arrYDN = YDN_ACCOUNT_ID.split(";");
 		for(int i = 0; i < arrYDN.length ; i++){
-    	    if(account_id.equals(arrYDN[i])) {
-			media = "YDN";
+    	    if(tmp_account_id.equals(arrYDN[i])) {
+				media = "YDN";
+				account_id = tmp_account_id;
 			}
    		}
 
-		String[] arrMS = MS_TEMPLATE_ID.split(";");
-		for(int i = 0; i < arrMS.length ; i++){
-    	    if(account_id.equals(arrMS[i])) {
+		String[] arrTemplateMS = MS_TEMPLATE_ID.split(";");
+		String[] arrAccountMS = MS_ACCOUNT_ID.split(";");
+		for(int i = 0; i < arrTemplateMS.length ; i++){
+    	    if(tmp_account_id.equals(arrTemplateMS[i])) {
 				media = "MICROSOFT";
+				account_id = arrAccountMS[i];
 			}
     	}
 
@@ -5960,21 +5983,15 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 
     if(fileDate.equals("")){ ///file daily
         target_filename = file_name;
-    }else{ ///file qua khu
-        /// lay listDate la danh sach cac ngay file input 
-        String[] dateStrArr = filename_date_string.split(";");
-		Date[] listDate = new Date[dateStrArr.length];
-        try {
-            for(int i = 0; i < dateStrArr.length; i++)
-                if(!dateStrArr[i].equals(" ")){
-                	listDate[i] = formatter.parse(dateStrArr[i]);
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
+    }else{   
+		Calendar cal = Calendar.getInstance();
+		///lay targetDate tu CV date
+        if(date != null) cal.setTime(date);
+        cal.add(Calendar.DATE, 61);
+        Date fileNameDate = cal.getTime();
+        
+      
         ///lay today
-        Calendar cal = Calendar.getInstance();
         Date today = new Date();
         cal.setTime(today);
         cal.set(Calendar.HOUR_OF_DAY, 0);
@@ -5983,28 +6000,18 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         cal.set(Calendar.MILLISECOND,0);
         today = cal.getTime();
 
-        ///lay targetDate tu CV date
-        cal.setTime(date);
-        cal.add(Calendar.DATE, 61);
-        Date fileNameDate = cal.getTime();
-        Date targetDate;
+		Date targetDate = new Date();
         if(fileNameDate.before(today)){
             targetDate = fileNameDate;
         }else{
             targetDate = today;
         }
+
 		//// so sanh target date voi listDate de tim file chua data moi nhat
         if(targetDate.equals(today)){
             target_date = "daily";
         }else{
-            
-            Date startDate = listDate[0];
-            Date endDate = listDate[listDate.length - 1];
-            if (targetDate.equals(startDate) || targetDate.equals(endDate) || (targetDate.after(startDate) && targetDate.before(endDate))) {
-                target_date = formatter.format(targetDate);
-            } else if (targetDate.after(endDate)) {
-                target_date = formatter.format(endDate);
-            }
+            target_date = formatter.format(targetDate);
         }
 
         ///tao target_filename tu target_date
@@ -6015,7 +6022,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         else {
             target_filename = file_name.replace(fileDate,target_date);
         }
-
+		
     }
 // end code
   outputRowData[outputListFilesInfex ] = target_filename;
@@ -6229,7 +6236,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <name>MICROSOFT</name>
     <type>Dummy</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -6239,38 +6246,6 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2080</xloc>
-      <yloc>1568</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Mapping account_id</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>account_id</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>15648651</replace_string>
-        <replace_by_string>F1099A3S</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-      </field>
-    </fields>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>2784</xloc>
       <yloc>1568</yloc>
       <draw>Y</draw>
       </GUI>
@@ -7101,7 +7076,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <escapechar/>
     <header>Y</header>
     <nr_headerlines>1</nr_headerlines>
-    <footer>N</footer>
+    <footer>Y</footer>
     <nr_footerlines>1</nr_footerlines>
     <line_wrapped>N</line_wrapped>
     <nr_wraps>1</nr_wraps>
@@ -7203,7 +7178,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2288</xloc>
-      <yloc>1440</yloc>
+      <yloc>1488</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -7248,7 +7223,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <escapechar/>
     <header>Y</header>
     <nr_headerlines>1</nr_headerlines>
-    <footer>N</footer>
+    <footer>Y</footer>
     <nr_footerlines>1</nr_footerlines>
     <line_wrapped>N</line_wrapped>
     <nr_wraps>1</nr_wraps>
@@ -7395,7 +7370,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2288</xloc>
-      <yloc>864</yloc>
+      <yloc>928</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -7421,7 +7396,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <escapechar/>
     <header>Y</header>
     <nr_headerlines>1</nr_headerlines>
-    <footer>N</footer>
+    <footer>Y</footer>
     <nr_footerlines>1</nr_footerlines>
     <line_wrapped>N</line_wrapped>
     <nr_wraps>1</nr_wraps>
@@ -7583,7 +7558,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2288</xloc>
-      <yloc>1056</yloc>
+      <yloc>1104</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -7609,7 +7584,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     <escapechar/>
     <header>Y</header>
     <nr_headerlines>1</nr_headerlines>
-    <footer>N</footer>
+    <footer>Y</footer>
     <nr_footerlines>1</nr_footerlines>
     <line_wrapped>N</line_wrapped>
     <nr_wraps>1</nr_wraps>
@@ -7756,7 +7731,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>2288</xloc>
-      <yloc>1248</yloc>
+      <yloc>1296</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -7791,6 +7766,464 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1072</xloc>
       <yloc>800</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>1.Filter rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>1. Sort CV file</send_true_to>
+<send_false_to>Dummy4</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>campaign_id</leftvalue>
+   <function>REGEXP</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>&#x5e;&#x5b;0-9&#x5d;&#x2b;&#x24;</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>adgroup_id</leftvalue>
+   <function>IS NULL</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text/><length>-1</length><precision>-1</precision><isnull>Y</isnull><mask/></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>ad_id</leftvalue>
+   <function>IS NULL</function>
+   <rightvalue/>
+   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>AND</operator>
+   <leftvalue>keyword_id</leftvalue>
+   <function>IS NULL</function>
+   <rightvalue/>
+   </condition>
+  </conditions>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2400</xloc>
+      <yloc>16</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MS ad</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2288</xloc>
+      <yloc>1648</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MS kw</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2288</xloc>
+      <yloc>1568</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>3.Union</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2784</xloc>
+      <yloc>1568</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get mappingLevel</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var mappingLevel &#x3d; &#x22;ad&#x22;&#x3b;&#xd;&#xa;var keyword_id &#x3d; null&#x3b;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>mappingLevel</name>
+        <rename>mappingLevel</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>      <field>        <name>keyword_id</name>
+        <rename>keyword_id</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2416</xloc>
+      <yloc>1648</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Get ad id</name>
+    <type>ScriptValueMod</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xd;&#xa;&#xd;&#xa;var ad_id &#x3d; null&#x3b;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>ad_id</name>
+        <rename>ad_id</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2416</xloc>
+      <yloc>1568</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>10.Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>Date</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>device</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>account_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>campaign_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>adgroup_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ad_id_1</name>
+        <rename>ad_id</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>keyword_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>media</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>keyword_mapping_level</name>
+        <rename>mappingLevel</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Keyword_MatchType</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_01</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_02</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_03</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_04</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_05</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_06</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_07</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_08</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_09</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_10</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_11</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_12</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_13</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_14</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_15</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_16</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_17</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_18</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_19</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_20</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2624</xloc>
+      <yloc>1568</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>11.Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>Date</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>device</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>account_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>campaign_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>adgroup_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>ad_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>keyword_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>media</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>mappingLevel</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Keyword_MatchType</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_01</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_02</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_03</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_04</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_05</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_06</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_07</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_08</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_09</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_10</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_11</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_12</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_13</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_14</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_15</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_16</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_17</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_18</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_19</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Value_20</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>2624</xloc>
+      <yloc>1648</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

@@ -367,7 +367,9 @@
 
         <class_name>Processor</class_name>
 
-        <class_source><![CDATA[import java.util.*;
+        <class_source><![CDATA[import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -389,21 +391,57 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 	String access_token = get(Fields.In, "access_token").getString(r);
 	String GG_DRIVE_UPLOAD_URL = getVariable("GG_DRIVE_UPLOAD_FILE_URL","r");
 	String OUTPUT_FOLDER_ID = getVariable("OUTPUT_FOLDER_ID","r");
+	String INPUT_EXCV_FOLDER_ID = getVariable("INPUT_EXCV_FOLDER_ID","r");
 	String PATH = getVariable("Internal.Job.Filename.Directory","r");
+	String IS_RENAME_UPLOAD_INPUT = getVariable("IS_RENAME_UPLOAD_INPUT","r");
+	String PARAM_INPUT_FILE_NAME = getVariable("PARAM_INPUT_FILE_NAME","r");
 	String path = PATH.replace("file://","");
-	String folderPath = path + "/../output";
+	String folderPath = path + "\\..\\output";
 	String responseMess = "";
-
+	
 	File directory = new File(folderPath);
     if (directory.exists() && directory.isDirectory()) {
         File[] files = directory.listFiles();
+        String[] filePaths = new String[files.length];
+        int index = 0;
+        /// tao mang chua cac output file path
+        if (files != null) {
+            for (int i = 0; i < files.length; i++) {
+                File file = files[i];
+                if (file.isFile()) {
+                    filePaths[index++] = file.getAbsolutePath();
+                }
+            }
+            int COUNT_OUTPUT_FILES = filePaths.length;
+            /// them daily input file path vao mang neu dang chay default
+            if (IS_RENAME_UPLOAD_INPUT.equals("TRUE")) {
+                String[] inputArr = PARAM_INPUT_FILE_NAME.split(";");
+                String[] newFilePaths = new String[filePaths.length + inputArr.length];
+                System.arraycopy(filePaths, 0, newFilePaths, 0, filePaths.length);
+                filePaths = newFilePaths;
 
-        for (int i = 0; i < files.length; i++) {
-            File file = files[i];
-            if (file.isFile()) {
-                String filePath = file.getAbsolutePath();
-                String fileName = "r";
-                
+                for (int i = 0; i < inputArr.length; i++) {
+                    String tmp = path + "\\..\\input\\exCV\\" + inputArr[i].replace("_yyyyMMdd","");
+                    filePaths[index++] = tmp;
+                }
+            }
+            for (int i = 0; i < filePaths.length; i++) {
+                String filePath = filePaths[i];
+				logBasic(filePath);
+                String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1);
+                String folderId = OUTPUT_FOLDER_ID;
+				/// rename va doi folder id neu la file daily input
+                if (i >= COUNT_OUTPUT_FILES) {
+                    Date today = new Date();
+                    // convert string
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+                    String dateStr = sdf.format(today);
+                    String baseName = fileName.substring(0, fileName.lastIndexOf('.'));
+                    fileName = baseName + "_" + dateStr + ".csv";
+					
+					folderId = INPUT_EXCV_FOLDER_ID;
+                }
+                //create body va upload
                 try {
                     URL url = new URL(GG_DRIVE_UPLOAD_URL);
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -414,7 +452,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 
                     String boundary = "foo_bar_baz";
                     String newLine = "\r\n";
-                    fileName = filePath.substring(filePath.lastIndexOf('\\') + 1);
+
 
                     OutputStream outputStream = connection.getOutputStream();
                     DataOutputStream writer = new DataOutputStream(outputStream);
@@ -423,7 +461,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
                     writer.writeBytes("Content-Type: application/json; charset=UTF-8" + newLine);
                     writer.writeBytes(newLine);
 
-                    String metaData = "{" + "\"name\": \"" + fileName + "\"," + "\"parents\": [\"" + OUTPUT_FOLDER_ID + "\"]" + "}";
+                    String metaData = "{" + "\"name\": \"" + fileName + "\"," + "\"parents\": [\"" + folderId + "\"]" + "}";
                     writer.writeBytes(metaData);
                     writer.writeBytes(newLine);
 
@@ -445,8 +483,6 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
                     while (scanner.hasNext()) {
                         responseMess += scanner.nextLine();
                     }
-                    //logBasic(responseMess);
-                    System.out.println(responseMess);
                     if (responseCode == HttpURLConnection.HTTP_OK) {
                         logBasic("DEV: UPLOAD SUCCESSFULLY");
                     } else {
@@ -456,7 +492,10 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             }
+
+
         }
     }
 // end code

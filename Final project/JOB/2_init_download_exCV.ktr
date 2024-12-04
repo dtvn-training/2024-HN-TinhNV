@@ -142,6 +142,25 @@
     </step>
 
   <step>
+    <name>Dummy</name>
+    <type>Dummy</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1456</xloc>
+      <yloc>272</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>Export file</name>
     <type>TextFileOutput</type>
     <description/>
@@ -200,6 +219,35 @@
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1680</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Filter null URL</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+<send_true_to>Download file data</send_true_to>
+<send_false_to>Dummy</send_false_to>
+    <compare>
+<condition>
+ <negated>N</negated>
+ <leftvalue>download_URL</leftvalue>
+ <function>IS NOT NULL</function>
+ <rightvalue/>
+ </condition>
+    </compare>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1328</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
       </GUI>
@@ -951,7 +999,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
         <presorted>N</presorted>
       </field>
       <field>
-        <name>createdTime</name>
+        <name>updated_time</name>
         <ascending>N</ascending>
         <case_sensitive>N</case_sensitive>
         <presorted>N</presorted>
@@ -961,54 +1009,6 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>1008</xloc>
       <yloc>176</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Filter null URL</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-<send_true_to>Download file data</send_true_to>
-<send_false_to>Dummy</send_false_to>
-    <compare>
-<condition>
- <negated>N</negated>
- <leftvalue>download_URL</leftvalue>
- <function>IS NOT NULL</function>
- <rightvalue/>
- </condition>
-    </compare>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1328</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Dummy</name>
-    <type>Dummy</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>1456</xloc>
-      <yloc>272</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
