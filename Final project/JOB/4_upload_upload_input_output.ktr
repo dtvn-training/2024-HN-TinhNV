@@ -427,7 +427,6 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
             }
             for (int i = 0; i < filePaths.length; i++) {
                 String filePath = filePaths[i];
-				logBasic(filePath);
                 String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1);
                 String folderId = OUTPUT_FOLDER_ID;
 				/// rename va doi folder id neu la file daily input
@@ -462,6 +461,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
                     writer.writeBytes(newLine);
 
                     String metaData = "{" + "\"name\": \"" + fileName + "\"," + "\"parents\": [\"" + folderId + "\"]" + "}";
+					logBasic(metaData);
                     writer.writeBytes(metaData);
                     writer.writeBytes(newLine);
 
