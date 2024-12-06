@@ -1,0 +1,80 @@
+■紐付け方法 // phương thức liên kết：// ValueTrack
+
+  ValueTrack
+  hãy sử dụng Fq_Banner_Id để làm trackerid
+　　
+　　Template : 
+  ADWORDS : 46245313515
+  {accountid}_{campaignid}_{adgroupid}_{creative}_{targetid}
+　
+　・YDN : 4835455
+　　{accountid}_{campaignid}_{adgroupid}_{creative}
+
+　・YSS : 1564488
+　　{accountid}_{campaignid}_{adgroupid}_{creative}_{targetid}
+　
+　・MICROSOFT（15648651）
+　　{accountId}_{CampaignId}_{AdGroupId}_{AdId}_{TargetId}
+   Tài khoản output liên kết là "F1099A3S".
+
+
+■デバイス判別 // xác định device
+　パラメータ内の文字列を利用して判別してください。// sử dụng string trong parameter và xác định
+　khac MOBILE：PC
+　MOBILE ：Smartphone
+　
+■入出力ファイル // input/output file
+Folder input excv:1SeWVUaZjChg80TecXaXZJiaKi5Jsuy_f
+Folder input media:1vUVPuWDt9qgw2KBGOvwWIozBUC2CycH1
+Folder output : 18KXJ0n2E1SDO4R8rs8GK4CwesCTfsPV9
+
+ Input :File CV
+　利用するファイルは2種類 // Có hai loại file sẽ được sử dụng.
+　①Bike_Quote_daily.csv
+　②Bike_NB_daily.csv
+　
+　・CV発生日 // ngày phát sinh CV
+　　①：Created_Date（C列）
+　　②：Transaction_Date（D列）
+
+　・トラッカーID // tracker ID
+　　①：Fq_Banner_Id（H列）
+　　②：Fq_Banner_Id（K列）
+　　
+　・ファイル名 // file name
+　　日付がありません。処理内で以下のリネームするようにしてください。// Không có ngày tháng. Vui lòng đổi tên như sau trong quá trình xử lý.
+　　①ファイルを取得 // lấy file
+　　②ファイル名に処理日の日付を付与する //Thêm ngày xử lý vào tên file
+　　③リネームしたファイルをGCSにアップロードする。//Upload file đã đổi tên lên folder input Drive.
+　　
+　　例：// ví dụ
+　　処理日 // ngày xử lý：2024/07/11
+　　取得ファイル // file lấy được：Bike_Quote_daily.csv,
+　　　　　　　　　Bike_NB_daily.csv
+　　　　　　　　　
+　　変更ファイル // file thay đổi：Bike_Quote_daily_20240711.csv,
+　　　　　　　　　Bike_NB_daily_20240711.csv
+
+■実行期間 // khoảng thời gian chạy fault
+　過去59日間を実行するようにしてください。// Khi chạy default vui lòng xử lý 59 ngày qua. (Data trong file chứa 61 ngày)
+
+　例：// ví dụ
+　実行日 // ngày chạy：7/11 (default)
+　紐付け期間 // khoảng thời gian liên kết：2024/05/13 - 2024/07/10
+
+■実行期間 // khoảng thời gian chạy input
+　Lưu ý. Data trong file luôn được cập nhật. Hãy lấy file chứa dữ liệu mới nhất khi chạy file
+	VD : input 20240711-20240711 ->download file Bike_Quote_daily_20240910.csv + Bike_NB_daily_20240910.csv
+Nếu không có file 20240910 hãy lấy file mới nhất chứa dữ liệu ngày 20240711 để tổng hợp
+　
+　※ファイルは期間データですので各々1ファイルから紐付け期間のデータを取得してください。// Vì các file này là dữ liệu khoảng thời gian, vui lòng lấy dữ liệu cho khoảng thời gian được liên kết từ mỗi file
+
+■CV項目 // Mục CV
+　以下のように紐づけるようにしてください。// Hãy liên kết như dưới đây
+　
+　・CV01：Number_of_Quotes
+　　入力ファイル：Bike_Quote_daily.csv
+　
+　・CV02：Number_of_Policies
+　　入力ファイル：Bike_NB_daily.csv
+
