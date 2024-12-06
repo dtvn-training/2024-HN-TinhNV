@@ -80,12 +80,13 @@
   <hop> <from>Request access token</from><to>Get access token</to><enabled>Y</enabled> </hop>
   <hop> <from>Set request params</from><to>Request access token</to><enabled>Y</enabled> </hop>
   <hop> <from>Get access token</from><to>Upload output file</to><enabled>Y</enabled> </hop>
+  <hop> <from>Get access token</from><to>Rename upload input file</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Get access token</name>
     <type>JsonInput</type>
     <description/>
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution/>
     <copies>1</copies>
          <partitioning>
@@ -168,7 +169,7 @@
     <defaultPathLeafToNull>N</defaultPathLeafToNull>
     <rownum_field/>
     <file>
-      <name>C&#x3a;&#x5c;Users&#x5c;TinhNV&#x5c;Desktop&#x5c;Task&#x5c;Final-project&#x5c;client_secret_training_intern_2024.json</name>
+      <name>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;..&#x5c;client_secret_training_intern_2024.json</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -244,6 +245,141 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>112</xloc>
       <yloc>144</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Rename upload input file</name>
+    <type>UserDefinedJavaClass</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+
+    <definitions>
+        <definition>
+        <class_type>TRANSFORM_CLASS</class_type>
+
+        <class_name>Processor</class_name>
+
+        <class_source><![CDATA[import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws KettleException
+{
+  Object[] r=getRow();
+  if (r==null)
+  {
+    setOutputDone();
+	return false;
+  }
+  if (first) {
+     first=false;
+  }
+  Object[] outputRowData = RowDataUtil.resizeArray(r, data.outputRowMeta.size());
+  int outputListFilesInfex = getInputRowMeta().size();
+// start code
+	String access_token = get(Fields.In, "access_token").getString(r);
+	String GG_DRIVE_UPLOAD_URL = getVariable("GG_DRIVE_UPLOAD_FILE_URL","r");
+	String FOLDER_ID = getVariable("INPUT_EXCV_FOLDER_ID","r");
+	String PATH = getVariable("Internal.Job.Filename.Directory","r");
+	String PARAM_INPUT_FILE_NAME = getVariable("PARAM_INPUT_FILE_NAME","r");
+	String IS_RENAME_UPLOAD = getVariable("IS_RENAME_UPLOAD_INPUT","r");
+	String path = PATH.replace("file://","");
+	String folderPath = path + "\\..\\input\\exCV\\";
+	String input_response_mess = "";
+	
+	if(IS_RENAME_UPLOAD.equals("TRUE")){
+        String[] inputArr = PARAM_INPUT_FILE_NAME.split(";");
+        for(int i = 0; i < inputArr.length; i++){
+            Date today = new Date();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+            String todayStr = formatter.format(today);
+            String fileName = inputArr[i].replace("yyyyMMdd",todayStr);
+            String filePath = folderPath + inputArr[i].replace("_yyyyMMdd","");
+            try {
+                URL url = new URL(GG_DRIVE_UPLOAD_URL);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("POST");
+                connection.setDoOutput(true);
+                connection.setRequestProperty("Authorization", "Bearer " + access_token);
+                connection.setRequestProperty("Content-Type", "multipart/related; boundary=foo_bar_baz");
+
+                String boundary = "foo_bar_baz";
+                String newLine = "\r\n";
+
+                OutputStream outputStream = connection.getOutputStream();
+                DataOutputStream writer = new DataOutputStream(outputStream);
+
+                writer.writeBytes("--" + boundary + newLine);
+                writer.writeBytes("Content-Type: application/json; charset=UTF-8" + newLine);
+                writer.writeBytes(newLine);
+
+                String metaData = "{" + "\"name\": \"" + fileName + "\"," + "\"parents\": [\"" + FOLDER_ID + "\"]" + "}";
+                writer.writeBytes(metaData);
+                writer.writeBytes(newLine);
+
+                writer.writeBytes("--" + boundary + newLine);
+                writer.writeBytes("Content-Type: application/text-plain" + newLine);
+                writer.writeBytes(newLine);
+
+                FileInputStream fileInputStream = new FileInputStream(filePath);
+                byte[] buffer = new byte[4096];
+                int bytesRead = -1;
+                while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+                    writer.write(buffer, 0, bytesRead);
+                }
+                writer.writeBytes(newLine);
+                writer.writeBytes("--" + boundary + "--" + newLine);
+
+                int responseCode = connection.getResponseCode();
+                Scanner scanner = new Scanner(connection.getInputStream());
+                while (scanner.hasNext()) {
+                    input_response_mess += scanner.nextLine();
+                }
+                //logBasic(responseMess);
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    logBasic("DEV: OK");
+                } else {
+                    logBasic("DEV: FAILED");
+                }
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }    
+// end code
+  outputRowData[outputListFilesInfex ] = input_response_mess;
+  putRow(data.outputRowMeta, outputRowData);
+  return true;
+}]]></class_source>
+        </definition>
+    </definitions>
+    <fields>
+        <field>
+        <field_name>input_response_mess</field_name>
+
+        <field_type>String</field_type>
+
+        <field_length>-1</field_length>
+
+        <field_precision>-1</field_precision>
+
+        </field>
+    </fields><clear_result_fields>N</clear_result_fields>
+<info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>688</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -390,114 +526,76 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
 // start code
 	String access_token = get(Fields.In, "access_token").getString(r);
 	String GG_DRIVE_UPLOAD_URL = getVariable("GG_DRIVE_UPLOAD_FILE_URL","r");
-	String OUTPUT_FOLDER_ID = getVariable("OUTPUT_FOLDER_ID","r");
-	String INPUT_EXCV_FOLDER_ID = getVariable("INPUT_EXCV_FOLDER_ID","r");
+	String FOLDER_ID = getVariable("OUTPUT_FOLDER_ID","r");
 	String PATH = getVariable("Internal.Job.Filename.Directory","r");
-	String IS_RENAME_UPLOAD_INPUT = getVariable("IS_RENAME_UPLOAD_INPUT","r");
 	String PARAM_INPUT_FILE_NAME = getVariable("PARAM_INPUT_FILE_NAME","r");
 	String path = PATH.replace("file://","");
 	String folderPath = path + "\\..\\output";
 	String responseMess = "";
 	
-	File directory = new File(folderPath);
+    File directory = new File(folderPath);
     if (directory.exists() && directory.isDirectory()) {
         File[] files = directory.listFiles();
-        String[] filePaths = new String[files.length];
-        int index = 0;
-        /// tao mang chua cac output file path
-        if (files != null) {
+        if (files != null)
             for (int i = 0; i < files.length; i++) {
-                File file = files[i];
+				File file = files[i];
                 if (file.isFile()) {
-                    filePaths[index++] = file.getAbsolutePath();
-                }
-            }
-            int COUNT_OUTPUT_FILES = filePaths.length;
-            /// them daily input file path vao mang neu dang chay default
-            if (IS_RENAME_UPLOAD_INPUT.equals("TRUE")) {
-                String[] inputArr = PARAM_INPUT_FILE_NAME.split(";");
-                String[] newFilePaths = new String[filePaths.length + inputArr.length];
-                System.arraycopy(filePaths, 0, newFilePaths, 0, filePaths.length);
-                filePaths = newFilePaths;
+                    String filePath = file.getAbsolutePath();
+                    String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1);
+                    try {
+                        URL url = new URL(GG_DRIVE_UPLOAD_URL);
+                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        connection.setRequestMethod("POST");
+                        connection.setDoOutput(true);
+                        connection.setRequestProperty("Authorization", "Bearer " + access_token);
+                        connection.setRequestProperty("Content-Type", "multipart/related; boundary=foo_bar_baz");
 
-                for (int i = 0; i < inputArr.length; i++) {
-                    String tmp = path + "\\..\\input\\exCV\\" + inputArr[i].replace("_yyyyMMdd","");
-                    filePaths[index++] = tmp;
-                }
-            }
-            for (int i = 0; i < filePaths.length; i++) {
-                String filePath = filePaths[i];
-                String fileName = filePath.substring(filePath.lastIndexOf('\\') + 1);
-                String folderId = OUTPUT_FOLDER_ID;
-				/// rename va doi folder id neu la file daily input
-                if (i >= COUNT_OUTPUT_FILES) {
-                    Date today = new Date();
-                    // convert string
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-                    String dateStr = sdf.format(today);
-                    String baseName = fileName.substring(0, fileName.lastIndexOf('.'));
-                    fileName = baseName + "_" + dateStr + ".csv";
-					
-					folderId = INPUT_EXCV_FOLDER_ID;
-                }
-                //create body va upload
-                try {
-                    URL url = new URL(GG_DRIVE_UPLOAD_URL);
-                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                    connection.setRequestMethod("POST");
-                    connection.setDoOutput(true);
-                    connection.setRequestProperty("Authorization", "Bearer " + access_token);
-                    connection.setRequestProperty("Content-Type", "multipart/related; boundary=foo_bar_baz");
+                        String boundary = "foo_bar_baz";
+                        String newLine = "\r\n";
 
-                    String boundary = "foo_bar_baz";
-                    String newLine = "\r\n";
+                        OutputStream outputStream = connection.getOutputStream();
+                        DataOutputStream writer = new DataOutputStream(outputStream);
 
+                        writer.writeBytes("--" + boundary + newLine);
+                        writer.writeBytes("Content-Type: application/json; charset=UTF-8" + newLine);
+                        writer.writeBytes(newLine);
 
-                    OutputStream outputStream = connection.getOutputStream();
-                    DataOutputStream writer = new DataOutputStream(outputStream);
+                        String metaData = "{" + "\"name\": \"" + fileName + "\"," + "\"parents\": [\"" + FOLDER_ID + "\"]" + "}";
+                        writer.writeBytes(metaData);
+                        writer.writeBytes(newLine);
+						logBasic(metaData);						
 
-                    writer.writeBytes("--" + boundary + newLine);
-                    writer.writeBytes("Content-Type: application/json; charset=UTF-8" + newLine);
-                    writer.writeBytes(newLine);
+                        writer.writeBytes("--" + boundary + newLine);
+                        writer.writeBytes("Content-Type: application/text-plain" + newLine);
+                        writer.writeBytes(newLine);
 
-                    String metaData = "{" + "\"name\": \"" + fileName + "\"," + "\"parents\": [\"" + folderId + "\"]" + "}";
-					logBasic(metaData);
-                    writer.writeBytes(metaData);
-                    writer.writeBytes(newLine);
+                        FileInputStream fileInputStream = new FileInputStream(filePath);
+                        byte[] buffer = new byte[4096];
+                        int bytesRead = -1;
+                        while ((bytesRead = fileInputStream.read(buffer)) != -1) {
+                            writer.write(buffer, 0, bytesRead);
+                        }
+                        writer.writeBytes(newLine);
+                        writer.writeBytes("--" + boundary + "--" + newLine);
 
-                    writer.writeBytes("--" + boundary + newLine);
-                    writer.writeBytes("Content-Type: application/text-plain" + newLine);
-                    writer.writeBytes(newLine);
-
-                    FileInputStream fileInputStream = new FileInputStream(filePath);
-                    byte[] buffer = new byte[4096];
-                    int bytesRead = -1;
-                    while ((bytesRead = fileInputStream.read(buffer)) != -1) {
-                        writer.write(buffer, 0, bytesRead);
-                    }
-                    writer.writeBytes(newLine);
-                    writer.writeBytes("--" + boundary + "--" + newLine);
-
-                    int responseCode = connection.getResponseCode();
-                    Scanner scanner = new Scanner(connection.getInputStream());
-                    while (scanner.hasNext()) {
-                        responseMess += scanner.nextLine();
-                    }
-                    if (responseCode == HttpURLConnection.HTTP_OK) {
-                        logBasic("DEV: UPLOAD SUCCESSFULLY");
-                    } else {
-                        logBasic("DEV: UPLOAD FAILED");
+                        int responseCode = connection.getResponseCode();
+                        Scanner scanner = new Scanner(connection.getInputStream());
+                        while (scanner.hasNext()) {
+                            responseMess += scanner.nextLine();
+                        }
+                        //logBasic(responseMess);
+                        if (responseCode == HttpURLConnection.HTTP_OK) {
+                            logBasic("DEV: OK");
+                        } else {
+                            logBasic("DEV: FAILED");
+                        }
+                    }catch (IOException e) {
+                        e.printStackTrace();
                     }
 
-                } catch (IOException e) {
-                    e.printStackTrace();
                 }
-
             }
-
-
-        }
-    }
+    }	
 // end code
   outputRowData[outputListFilesInfex ] = responseMess;
   putRow(data.outputRowMeta, outputRowData);
@@ -519,7 +617,7 @@ public boolean processRow(StepMetaInterface smi, StepDataInterface sdi) throws K
     </fields><clear_result_fields>N</clear_result_fields>
 <info_steps></info_steps><target_steps></target_steps><usage_parameters></usage_parameters>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>624</xloc>
+      <xloc>688</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
       </GUI>

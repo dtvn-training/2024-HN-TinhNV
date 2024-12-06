@@ -65,12 +65,12 @@
       <yloc>192</yloc>
       </entry>
     <entry>
-      <name>Upload input&#x2f;output</name>
+      <name>Upload output</name>
       <description/>
       <type>TRANS</type>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;4_upload_upload_input_output.ktr</filename>
+      <filename>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x5c;4_upload_upload_output.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -101,7 +101,7 @@
   <hops>
     <hop>
       <from>START</from>
-      <to>Upload input&#x2f;output</to>
+      <to>Upload output</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -109,7 +109,7 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Upload input&#x2f;output</from>
+      <from>Upload output</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
